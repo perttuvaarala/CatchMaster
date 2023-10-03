@@ -1,0 +1,20 @@
+type Bait {
+  id: ID!
+  name: String!
+  brand: String!
+  color: String!
+  weight: Float!
+}
+
+type Query {
+  getAllBaits: [Bait!]!
+}
+
+type Mutation {
+  createBait(
+    name: String!
+    brand: String!
+    color: String!
+    weight: Float!
+  ): Bait!
+}
