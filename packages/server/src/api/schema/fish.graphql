@@ -1,0 +1,13 @@
+type Fish {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  getAllFish: [Fish!]!
+  fishByName(name: String!): ID!
+}
+
+type Mutation {
+  createFish(name: String!): Fish!
+}

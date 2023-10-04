@@ -17,5 +17,7 @@
     "url": "https://github.com/perttuvaarala/CatchMaster/issues"
   },
   "homepage": "https://github.com/perttuvaarala/CatchMaster#readme",
-  "workspaces": ["packages/*"]
+  "workspaces": [
+    "packages/*"
+  ]
 }

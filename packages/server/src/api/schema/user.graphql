@@ -1,0 +1,21 @@
+type User {
+  id: ID!
+  username: String!
+  birthdate: String!
+  favouriteFishingStyle: String!
+  baits: [Bait!]!
+}
+
+type Query {
+  getAllUsers: [User!]!
+  getUsersBaitsByid(id: ID!): [String!]!
+}
+
+type Mutation {
+  createUser(
+    username: String!
+    birthdate: String!
+    favouriteFishingStyle: String!
+    baits: [String!]!
+  ): User!
+}
