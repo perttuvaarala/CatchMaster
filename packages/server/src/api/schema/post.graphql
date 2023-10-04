@@ -5,9 +5,9 @@ type Post {
   content: String!
   timestamp: String!
   imagelink: String!
-  baitID: String!
-  userID: String!
-  fishID: String!
+  bait: Bait!
+  user: User!
+  fish: Fish!
   weatherCondition: String!
 }
 
@@ -20,11 +20,9 @@ type Mutation {
     lon: Float!
     lat: Float!
     content: String!
-    timestamp: String!
     imagelink: String!
-    baitID: String!
-    userID: String!
-    fishID: String!
-    weatherCondition: String!
+    baitID: ID!
+    userID: ID!
+    fishID: ID!
   ): Post!
 }

@@ -1,6 +1,7 @@
 import { Schema, model } from "mongoose";
 
-interface Bait {
+export interface Bait {
+  id: string;
   name: string;
   brand: string;
   color: string;

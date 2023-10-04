@@ -3,7 +3,7 @@ type User {
   username: String!
   birthdate: String!
   favouriteFishingStyle: String!
-  baits: [String!]!
+  baits: [Bait!]!
 }
 
 type Query {

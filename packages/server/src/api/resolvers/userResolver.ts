@@ -1,6 +1,12 @@
-import UserModel from "../models/userModel";
+import BaitModel from "../models/baitModel";
+import UserModel, { User } from "../models/userModel";
 
 const userReslover = {
+  User: {
+    baits: async (parent: User, _args: any, _context: any, _info: any) => {
+      return BaitModel.find({ _id: { $in: parent.baits } });
+    },
+  },
   Query: {
     getAllUsers: async () => {
       try {

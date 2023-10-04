@@ -1,6 +1,7 @@
 import { Schema, model } from "mongoose";
 
-interface Fish {
+export interface Fish {
+  id: string;
   name: string;
 }
 

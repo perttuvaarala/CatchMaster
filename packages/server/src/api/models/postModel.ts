@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
-interface Post {
+export interface Post {
+  id: string;
   lon: number;
   lat: number;
   content: string;
