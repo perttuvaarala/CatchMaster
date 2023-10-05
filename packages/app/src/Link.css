@@ -1,0 +1,29 @@
+.nav-link {
+    
+    font-family: 'Advent Pro';
+    font-size: 30px;
+    padding: 1%;
+   
+    
+  }
+  a.nav-link{
+    color:#000000;
+  }
+  .nav-link:hover {
+    color: #837c7c; 
+  }
+  .head{
+    color:#000000;
+    font-family: 'Advent Pro';
+    font-size: 50px;
+    text-align: left;
+ width: 50%;
+ align-items: center;
+ margin-left: 2%;
+    
+  }
+  .nav{
+    width: 50%;
+    text-align: right;
+    margin-right: 2%;
+  }

@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import { Outlet, NavLink} from 'react-router-dom'
+import '../Link.css';
+
 
 const StyledRoot = styled.div`
   display: flex;
@@ -10,10 +12,11 @@ const StyledNav = styled.div`
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
-    height: 3.5rem;
+    height: 5.5rem;
     align-items: center;
-    justify-content: center;
+    width:100%;
     background-color: #D8FBB8;
+    
 `
 
 const StyledFooter = styled.div`
@@ -26,14 +29,22 @@ const StyledFooter = styled.div`
 `
 
 function Root() {
+  
   return (
+    
    <StyledRoot>
+    <link href='https://fonts.googleapis.com/css?family=Advent Pro' rel='stylesheet'></link>
+    
     <StyledNav>
-      <NavLink to={"/"}><u>Home</u></NavLink>
-      <NavLink to={"/map"}><u>Map</u></NavLink>
-      <NavLink to={"/weather"}><u>Weather</u></NavLink>
-      <NavLink to={"/profile"}><u>Profile</u></NavLink>
+    <div className='head'>CatchMaster</div>
+    <div className='nav'>
+      <NavLink className="nav-link" to={"/"}><u>Home</u></NavLink>
+      <NavLink className="nav-link" to={"/map"}><u>Map</u></NavLink>
+      <NavLink className="nav-link" to={"/weather"}><u>Weather</u></NavLink>
+      <NavLink className="nav-link" to={"/profile"}><u>Profile</u></NavLink>
+      </div>
     </StyledNav>
+   
     <div style={{backgroundColor:"white"}}>
         <Outlet />
     </div>
