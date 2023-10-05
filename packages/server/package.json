@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon --exec ts-node src/index.ts"
+    "dev": "cross-env NODE_ENV=development nodemon --exec ts-node src/index.ts",
+    "gen:schema": "graphql-codegen --config codegen.schema.yml"
   },
   "keywords": [],
   "author": "",

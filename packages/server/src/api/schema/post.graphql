@@ -1,28 +1,28 @@
 type Post {
-  id: ID!
-  lon: Float!
-  lat: Float!
-  content: String!
-  timestamp: String!
-  imagelink: String!
-  bait: Bait!
-  user: User!
-  fish: Fish!
-  weatherCondition: String!
+	id: ID!
+	lon: Float!
+	lat: Float!
+	content: String!
+	timestamp: String!
+	imagelink: String!
+	bait: Bait!
+	user: User!
+	fish: Fish!
+	weatherCondition: String!
 }
 
 type Query {
-  getAllPosts: [Post]
+	getAllPosts: [Post!]!
 }
 
 type Mutation {
-  createPost(
-    lon: Float!
-    lat: Float!
-    content: String!
-    imagelink: String!
-    baitID: ID!
-    userID: ID!
-    fishID: ID!
-  ): Post!
+	createPost(
+		lon: Float!
+		lat: Float!
+		content: String!
+		imagelink: String!
+		baitID: ID!
+		userID: ID!
+		fishID: ID!
+	): Post!
 }
