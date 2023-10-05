@@ -19,7 +19,8 @@
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.16.0",
-    "styled-components": "^6.0.8"
+    "styled-components": "^6.0.8",
+    "axios": "^1.5.1"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "5.0.0",

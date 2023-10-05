@@ -1,5 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { AxiosResponse, AxiosError } from 'axios';
+
+
+type WeatherApiResponse = AxiosResponse<{
+
+  temperature_2m: number;
+  relativehumidity_2m: number;
+  apparent_temperature: number;
+  precipitation: number;
+  weathercode: string;
+  visibility: number;
+  uv_index: number;
+
+}>;
+
+
+type WeatherApiError = AxiosError<any>;
+
 
 function Weather() {
   const [latitude, setLatitude] = useState<number | null>(null);
@@ -29,17 +47,18 @@ function Weather() {
   useEffect(() => {
     if (latitude !== null && longitude !== null) {
         const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation,weathercode,visibility,uv_index&daily=sunrise,sunset,precipitation_sum,precipitation_probability_max&current_weather=true&windspeed_unit=ms&timezone=auto&forecast_days=1`;
-      axios
+        axios
         .get(apiUrl)
-        .then((response) => {
+        .then((response: WeatherApiResponse) => {
           setWeatherData(response.data);
           console.log(response.data);
           setLoading(false);
         })
-        .catch((error) => {
+        .catch((error: WeatherApiError) => {
           setError("Error fetching weather data: " + error.message);
           setLoading(false);
         });
+      
     }
   }, [latitude, longitude]);
 
