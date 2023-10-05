@@ -1,7 +1,10 @@
 import {createBrowserRouter} from 'react-router-dom'
 import Root from './views/Root'
-import Main from './views/Main'
-import Map from './views/Map'
+import Main from './views/mainView'
+import Map from './views/mapView'
+import Weather from './views/weatherView'
+import Profile from './views/profileView'
+
 export const router = createBrowserRouter([{
   path: '/',
     element: <Root />,
@@ -11,7 +14,14 @@ export const router = createBrowserRouter([{
         path: 'map',
         element: <Map />
       },
+      {
+        path: 'weather',
+        element: <Weather />
+      },
+      {
+        path: 'profile',
+        element: <Profile />
+      },
     ]
   }
-
 ])

@@ -1,0 +1,59 @@
+query AllPosts {
+	getAllPosts {
+		id
+		lon
+		lat
+		content
+		timestamp
+		imagelink
+		bait {
+			id
+		}
+		user {
+			username
+			id
+		}
+		fish {
+			id
+		}
+		weatherCondition
+	}
+}
+
+mutation CreatePost(
+	$lon: Float!
+	$lat: Float!
+	$content: String!
+	$imagelink: String!
+	$baitID: ID!
+	$userID: ID!
+	$fishID: ID!
+) {
+	createPost(
+		lon: $lon
+		lat: $lat
+		content: $content
+		imagelink: $imagelink
+		baitID: $baitID
+		userID: $userID
+		fishID: $fishID
+	) {
+		id
+		lon
+		lat
+		content
+		timestamp
+		imagelink
+		bait {
+			id
+		}
+		user {
+			username
+			id
+		}
+		fish {
+			id
+		}
+		weatherCondition
+	}
+}
