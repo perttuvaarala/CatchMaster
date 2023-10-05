@@ -9,7 +9,7 @@ const StyleProfile = styled.div`
   height: 40rem;
 `;
 
-function Profile() {
+function ProfileView() {
 	return (
     <StyleProfile>
         Profile
@@ -18,4 +18,4 @@ function Profile() {
     ;
 }
 
-export default Profile;
+export default ProfileView;

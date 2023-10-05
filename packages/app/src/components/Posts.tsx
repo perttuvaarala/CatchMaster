@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { AllPostsQuery, useAllPostsQuery, useCreatePostMutation } from '../grapqhl/AllPosts.generated';
+import { AllPostsQuery, useAllPostsQuery } from '../grapqhl/AllPosts.generated';
 import { FC } from 'react';
 import Image from './Image';
 

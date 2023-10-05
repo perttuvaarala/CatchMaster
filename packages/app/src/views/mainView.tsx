@@ -8,7 +8,7 @@ const StyledMain = styled.div`
   background-color: #1E1E1E;
 `
 
-function Main() {
+function MainView() {
   return (
    <StyledMain>
    <Posts />
@@ -16,4 +16,4 @@ function Main() {
   )
 }
 
-export default Main
+export default MainView
