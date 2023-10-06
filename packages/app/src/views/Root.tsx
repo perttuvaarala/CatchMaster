@@ -54,7 +54,7 @@ function Root() {
     <div style={{backgroundColor:"white"}}>
         <Outlet />
     </div>
-    <StyledFooter>Group 2</StyledFooter>
+    <StyledFooter>© 2023 Group 2, Inc.</StyledFooter>
    </StyledRoot>
   )
 }
