@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Outlet, NavLink} from 'react-router-dom'
 import '../Link.css';
+import logo from '../assets/catchmaster-logo.png' 
 
 
 const StyledRoot = styled.div`
@@ -36,7 +37,12 @@ function Root() {
     <link href='https://fonts.googleapis.com/css?family=Advent Pro' rel='stylesheet'></link>
     
     <StyledNav>
+      <div className='wrap'>
+    <div className='logo'>
+      <img src={logo}  alt="CatchMaster logo" width="80%" height="100%"></img>
+    </div>
     <div className='head'>CatchMaster</div>
+    </div>
     <div className='nav'>
       <NavLink className="nav-link" to={"/"}><u>Home</u></NavLink>
       <NavLink className="nav-link" to={"/map"}><u>Map</u></NavLink>
