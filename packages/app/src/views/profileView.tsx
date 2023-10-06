@@ -9,10 +9,25 @@ const StyleProfile = styled.div`
   height: 40rem;
 `;
 
+const Username = styled.h1`
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-decoration: underline;
+`;
+
+const Text = styled.p`
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+`;
+
 function ProfileView() {
 	return (
     <StyleProfile>
-        Profile
+      <Username>*TÄHÄN TULEE SIT KÄYTTÄJÄN USERNAME*</Username>
+      <Text>Age: *TÄHÄN TULEE IKÄ*</Text>
+      <Text>Preferred fishing style: *TÄHÄN TULEE LEMPIKALASTUSTYYLI* </Text>
     </StyleProfile>
     )
     ;
