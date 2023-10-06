@@ -25,12 +25,32 @@ const NewPost: React.FC = () => {
       }
     };
   
-    const handleSubmit = (e: FormEvent) => {
-      e.preventDefault();
-      console.log('Length:', length);
-      console.log('Weight:', weight);
-      console.log('Image:', image);
-    };
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault();
+    
+        try {
+          // Get current location
+          const position = await getCurrentLocation();
+          const { latitude, longitude } = position.coords;
+    
+          console.log('Length:', length);
+          console.log('Weight:', weight);
+          console.log('Image:', image);
+          console.log('Latitude:', latitude);
+          console.log('Longitude:', longitude);
+        } catch (e) {
+          console.error('Error getting location:');
+        }
+      };
+    
+      const getCurrentLocation = (): Promise<GeolocationPosition> =>
+        new Promise((resolve, reject) => {
+          if (!navigator.geolocation) {
+            reject(new Error('Geolocation is not supported by your browser.'));
+          } else {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+          }
+        });
   
     return (
       <form onSubmit={handleSubmit}>
