@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { AllPostsQuery, useAllPostsQuery } from "../grapqhl/AllPosts.generated";
 import { FC } from "react";
 import Image from "./Image";
+import "../Link.css"
+import { NavLink } from "react-router-dom";
 
 const StyledPost = styled.div`
 	display: flex;
@@ -20,6 +22,7 @@ const StyledBackground = styled.div`
 	flex-direction: column-reverse;
 	background-color: #1e1e1e;
 `;
+
 
 interface PostProps {
 	post: AllPostsQuery["getAllPosts"][0];
@@ -51,6 +54,7 @@ const Post: FC<PostProps> = ({ post }) => {
 				<p>{post.content}</p>
 			</div>
 			<Image src={post.imagelink} />
+			
 		</StyledPost>
 	);
 };
@@ -72,6 +76,7 @@ export default function Posts() {
 			{data.getAllPosts.map((post) => (
 				<Post key={post.id} post={post} />
 			))}
+			<button className="plusbutton"><NavLink className= "plusLink" to={"/NewPost"}><u className= "plusLink">+</u></NavLink></button>
 		</StyledBackground>
 	);
 }
