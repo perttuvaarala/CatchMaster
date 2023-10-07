@@ -39,3 +39,31 @@
     flex-direction: row;
     align-items: center;
   }
+.plusbutton{
+  height: 75px;
+  width: 75px;
+box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+  0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  background-color: #D8FBB8;
+  border-radius: 35px;
+  font: inherit;
+  font-size: xx-large;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+ right:20px; 
+    left:auto;
+}
+.plusbutton:hover {
+  background:#192113;
+}
+.plusLink{
+  color:#000000;
+  text-decoration: none;
+}
+.plusLink:hover{
+  color:#000000;
+  text-decoration: none;
+}
+
+
