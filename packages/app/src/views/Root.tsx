@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Outlet, NavLink} from 'react-router-dom'
 import '../Link.css';
 import logo from '../assets/catchmaster-logo.png' 
+import Login from '../components/Login';
 
 
 const StyledRoot = styled.div`
@@ -48,6 +49,7 @@ function Root() {
       <NavLink className="nav-link" to={"/map"}><u>Map</u></NavLink>
       <NavLink className="nav-link" to={"/weather"}><u>Weather</u></NavLink>
       <NavLink className="nav-link" to={"/profile"}><u>Profile</u></NavLink>
+      <Login/>
       </div>
     </StyledNav>
    
