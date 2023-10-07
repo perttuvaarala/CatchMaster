@@ -4,6 +4,7 @@ import Main from './views/mainView'
 import Map from './views/mapView'
 import Weather from './views/weatherView'
 import Profile from './views/profileView'
+import NewPost from './views/NewPostView'
 
 export const router = createBrowserRouter([{
   path: '/',
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([{
       {
         path: 'profile',
         element: <Profile />
+      },
+      {
+        path: 'NewPost',
+        element: <NewPost />
       },
     ]
   }
