@@ -1,11 +1,10 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
-dotenv.config();
+import { config } from "./config";
 
 const mongoConnect = async () => {
-  const connection = await mongoose.connect(process.env.DATABASE_URL as string);
-  console.log("DB connected successfully");
-  return connection;
+	const connection = await mongoose.connect(config.DATABASE_URL);
+	console.log("DB connected successfully");
+	return connection;
 };
 
 export default mongoConnect;

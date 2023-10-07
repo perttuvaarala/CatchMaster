@@ -85,6 +85,7 @@ export type Post = {
 
 export type Query = {
   __typename?: 'Query';
+  currentUser?: Maybe<User>;
   fishByName: Scalars['ID']['output'];
   getAllBaits: Array<Bait>;
   getAllFish: Array<Fish>;
@@ -105,9 +106,10 @@ export type QueryGetUsersBaitsByidArgs = {
 
 export type User = {
   __typename?: 'User';
-  baits: Array<Bait>;
-  birthdate: Scalars['String']['output'];
-  favouriteFishingStyle: Scalars['String']['output'];
+  baits?: Maybe<Array<Bait>>;
+  birthdate?: Maybe<Scalars['String']['output']>;
+  email: Scalars['String']['output'];
+  favouriteFishingStyle?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   username: Scalars['String']['output'];
 };
