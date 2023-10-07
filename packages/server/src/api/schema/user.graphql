@@ -14,10 +14,10 @@ type Query {
 }
 
 type Mutation {
-	createUser(
-		username: String!
-		birthdate: String!
-		favouriteFishingStyle: String!
-		baits: [String!]!
+	editUser(
+		username: String
+		birthdate: String
+		favouriteFishingStyle: String
+		baits: [ID!]
 	): User!
 }

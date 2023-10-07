@@ -26,7 +26,6 @@ passport.use(
 			callbackURL: config.GOOGLE_CALLBACK_URL,
 		},
 		async function (_accessToken, _refreshToken, profile, cb) {
-			// console.log(profile);
 			if (!profile?.emails?.[0]) {
 				return cb(new Error("No email found"));
 			}
@@ -50,7 +49,7 @@ passport.use(
 );
 
 passport.serializeUser(function (user, done) {
-	console.log("serializing", user);
+
 
 	const email = (user as User)?.email;
 	if (email) {
@@ -60,7 +59,6 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(async function (email: string, done) {
-	console.log("deserializing", email);
 
 	const user = await userModel.findOne({ email });
 	if (user) {
@@ -119,14 +117,11 @@ const startServer = async () => {
 		"/",
 		cors<cors.CorsRequest>(corsOptions),
 		json(),
-		expressMiddleware(server, {
+	expressMiddleware(server, {
 			context: async ({ req }): Promise<TContext> => {
-				console.log(req.user);
-				console.log(req.session);
 				return { user: req.user as User | undefined };
-			},
-		}),
-	);
+			}}
+	));
 
 	httpServer.listen({ port: 3000 }, () =>
 		console.log(`🚀 Server ready at port 3000`),

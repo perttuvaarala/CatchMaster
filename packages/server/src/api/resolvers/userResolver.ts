@@ -1,4 +1,4 @@
-import { TContext } from "../..";
+import { TContext } from './../../index';
 import BaitModel from "../models/baitModel";
 import UserModel, { User } from "../models/userModel";
 
@@ -48,17 +48,22 @@ const userReslover = {
 		},
 	},
 	Mutation: {
-		createUser: async (
+		editUser: async (
 			_parent: any,
 			args: any,
-			_context: TContext,
+			context: TContext,
 			_info: any,
 		) => {
+			if(!context.user){
+				throw new Error("Log in!");
+			}
 			try {
-				const user = await UserModel.create(args);
-				return user;
+				const user = await UserModel.findByIdAndUpdate(context.user.id, args);
+				if (!user) throw new Error("Failed to find user")
+				user.id = user?._id
+				return user ;
 			} catch (error) {
-				console.error("Error creating user:", error);
+				console.error("Error updating user:", error);
 				throw error;
 			}
 		},
