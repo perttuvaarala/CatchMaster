@@ -9,6 +9,7 @@ const StyledRoot = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  min-height: 100vh;
 `
 const StyledNav = styled.div`
     display: flex;
@@ -27,7 +28,7 @@ const StyledFooter = styled.div`
     color: white;
     text-align: center;
     padding: 0.5rem;
-    bottom: 0;
+    margin-top: auto;
 `
 
 function Root() {
