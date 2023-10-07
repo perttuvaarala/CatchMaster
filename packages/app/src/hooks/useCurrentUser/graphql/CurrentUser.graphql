@@ -2,10 +2,31 @@ fragment CurrentUser on User {
 	id
 	username
 	email
+	birthdate
+	favouriteFishingStyle
+	baits {
+		id
+	}
 }
 
 query CurrentUser {
 	currentUser {
+		...CurrentUser
+	}
+}
+
+mutation ModifyCurrentUser(
+	$username: String
+	$birthdate: String
+	$favouriteFishingStyle: String
+	$baitIDs: [ID!]
+) {
+	editUser(
+		username: $username
+		birthdate: $birthdate
+		favouriteFishingStyle: $favouriteFishingStyle
+		baits: $baitIDs
+	) {
 		...CurrentUser
 	}
 }
