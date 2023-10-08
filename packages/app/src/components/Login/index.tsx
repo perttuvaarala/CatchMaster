@@ -29,12 +29,12 @@ const Login: FC = () => {
 		<StyledLoginContainer>
 			{currentUser && (
 				<StyledUsername>
-					Käyttäjänä {currentUser.username}
+					Logged in as {currentUser.username}
 				</StyledUsername>
 			)}
 			{!currentUser && (
 				<StyledLoginButton onClick={() => login()}>
-					Login with google
+					Login with Google
 				</StyledLoginButton>
 			)}
 		</StyledLoginContainer>

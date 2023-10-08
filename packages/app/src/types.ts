@@ -34,7 +34,7 @@ export type Mutation = {
   createBait: Bait;
   createFish: Fish;
   createPost: Post;
-  createUser: User;
+  editUser: User;
 };
 
 
@@ -62,11 +62,11 @@ export type MutationCreatePostArgs = {
 };
 
 
-export type MutationCreateUserArgs = {
-  baits: Array<Scalars['String']['input']>;
-  birthdate: Scalars['String']['input'];
-  favouriteFishingStyle: Scalars['String']['input'];
-  username: Scalars['String']['input'];
+export type MutationEditUserArgs = {
+  baits?: InputMaybe<Array<Scalars['ID']['input']>>;
+  birthdate?: InputMaybe<Scalars['String']['input']>;
+  favouriteFishingStyle?: InputMaybe<Scalars['String']['input']>;
+  username?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Post = {
