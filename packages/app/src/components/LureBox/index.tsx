@@ -18,7 +18,7 @@ const StyledBait = styled.div`
 	background-color: rgba(0, 0, 0, 0.075);
 `;
 
-const StyledButton = styled(Link)`
+const StyledLink = styled(Link)`
 	background-color: transparent;
 	padding: 0.75rem 0.25rem;
 	border: 1px solid hsl(92 73% 60% / 1);
@@ -54,10 +54,10 @@ function LureBox({ userID }: { userID: string }) {
 				}}
 			>
 				<h3>Lure box</h3>
-				<StyledButton to={"/newbait"}>Add bait</StyledButton>
+				<StyledLink to={"/newbait"}>Add bait</StyledLink>
 			</div>
 			{data.getUserByID.baits.map((bait) => (
-				<StyledBait>
+				<StyledBait key={bait.id}>
 					<h4>{bait.name}</h4>
 					<span>{bait.brand}</span>
 					<span>{bait.color}</span>
