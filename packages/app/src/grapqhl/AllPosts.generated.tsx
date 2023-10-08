@@ -6,11 +6,13 @@ const defaultOptions = {} as const;
 export type AllPostsQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type AllPostsQuery = { __typename?: 'Query', getAllPosts: Array<{ __typename?: 'Post', id: string, lon: number, lat: number, content: string, timestamp: string, imagelink: string, weatherCondition: string, bait: { __typename?: 'Bait', id: string }, user: { __typename?: 'User', username: string, id: string }, fish: { __typename?: 'Fish', id: string } }> };
+export type AllPostsQuery = { __typename?: 'Query', getAllPosts: Array<{ __typename?: 'Post', id: string, lon: number, lat: number, lenght: number, weight: number, content: string, timestamp: string, imagelink: string, weatherCondition: string, bait: { __typename?: 'Bait', id: string }, user: { __typename?: 'User', username: string, id: string }, fish: { __typename?: 'Fish', id: string } }> };
 
 export type CreatePostMutationVariables = Types.Exact<{
   lon: Types.Scalars['Float']['input'];
   lat: Types.Scalars['Float']['input'];
+  lenght: Types.Scalars['Float']['input'];
+  weight: Types.Scalars['Float']['input'];
   content: Types.Scalars['String']['input'];
   imagelink: Types.Scalars['String']['input'];
   baitID: Types.Scalars['ID']['input'];
@@ -28,6 +30,8 @@ export const AllPostsDocument = gql`
     id
     lon
     lat
+    lenght
+    weight
     content
     timestamp
     imagelink
@@ -73,10 +77,12 @@ export type AllPostsQueryHookResult = ReturnType<typeof useAllPostsQuery>;
 export type AllPostsLazyQueryHookResult = ReturnType<typeof useAllPostsLazyQuery>;
 export type AllPostsQueryResult = Apollo.QueryResult<AllPostsQuery, AllPostsQueryVariables>;
 export const CreatePostDocument = gql`
-    mutation CreatePost($lon: Float!, $lat: Float!, $content: String!, $imagelink: String!, $baitID: ID!, $userID: ID!, $fishID: ID!) {
+    mutation CreatePost($lon: Float!, $lat: Float!, $lenght: Float!, $weight: Float!, $content: String!, $imagelink: String!, $baitID: ID!, $userID: ID!, $fishID: ID!) {
   createPost(
     lon: $lon
     lat: $lat
+    lenght: $lenght
+    weight: $lenght
     content: $content
     imagelink: $imagelink
     baitID: $baitID
@@ -120,6 +126,8 @@ export type CreatePostMutationFn = Apollo.MutationFunction<CreatePostMutation, C
  *   variables: {
  *      lon: // value for 'lon'
  *      lat: // value for 'lat'
+ *      lenght: // value for 'lenght'
+ *      weight: // value for 'weight'
  *      content: // value for 'content'
  *      imagelink: // value for 'imagelink'
  *      baitID: // value for 'baitID'

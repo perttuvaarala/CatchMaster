@@ -4,6 +4,8 @@ export interface Post {
   id: string;
   lon: number;
   lat: number;
+  lenght:number;
+  weight:number;
   content: string;
   timestamp: string;
   imagelink: string;
@@ -19,6 +21,14 @@ const postSchema = new mongoose.Schema<Post>({
     required: true,
   },
   lat: {
+    type: Number,
+    required: true,
+  },
+  lenght: {
+    type: Number,
+    required: true,
+  },
+  weight: {
     type: Number,
     required: true,
   },

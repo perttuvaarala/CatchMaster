@@ -125,7 +125,7 @@ function EditProfile() {
 				console.error(e);
 			},
 			onCompleted: (r) => {
-				console.log(r);
+				console.info(r);
 			},
 			refetchQueries: [CurrentUserDocument],
 		});
