@@ -4,12 +4,12 @@ type User {
 	username: String!
 	birthdate: String
 	favouriteFishingStyle: String
-	baits: [Bait!]
+	baits: [Bait!]!
 }
 
 type Query {
 	getAllUsers: [User!]!
-	getUsersBaitsByid(id: ID!): [String!]!
+	getUserByID(id: ID!): User!
 	currentUser: User
 }
 

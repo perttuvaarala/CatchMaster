@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import Map from "../components/Map";
 
-const StyledMap = styled.div`
+const StyledNewBait = styled.div`
 	display: flex;
 	flex-direction: column;
 	background-color: #48412f;
@@ -11,9 +10,9 @@ const StyledMap = styled.div`
 
 function MapView() {
 	return (
-		<StyledMap>
-			<Map />
-		</StyledMap>
+		<StyledNewBait>
+			<h1>New bait</h1>
+		</StyledNewBait>
 	);
 }
 

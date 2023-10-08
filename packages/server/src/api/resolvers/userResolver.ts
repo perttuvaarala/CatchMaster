@@ -1,4 +1,4 @@
-import { TContext } from './../../index';
+import { TContext } from "./../../index";
 import BaitModel from "../models/baitModel";
 import UserModel, { User } from "../models/userModel";
 
@@ -32,17 +32,17 @@ const userReslover = {
 				throw error;
 			}
 		},
-		getUsersBaitsByid: async (
+		getUserByID: async (
 			_parent: any,
 			args: any,
 			_context: TContext,
 			_info: any,
 		) => {
 			try {
-				const users = await UserModel.findById(args.id);
-				return users?.baits;
+				const user = await UserModel.findById(args.id);
+				return user;
 			} catch (error) {
-				console.error("Error fetching all users:", error);
+				console.error("Error fetching user:", error);
 				throw error;
 			}
 		},
@@ -54,14 +54,17 @@ const userReslover = {
 			context: TContext,
 			_info: any,
 		) => {
-			if(!context.user){
+			if (!context.user) {
 				throw new Error("Log in!");
 			}
 			try {
-				const user = await UserModel.findByIdAndUpdate(context.user.id, args);
-				if (!user) throw new Error("Failed to find user")
-				user.id = user?._id
-				return user ;
+				const user = await UserModel.findByIdAndUpdate(
+					context.user.id,
+					args,
+				);
+				if (!user) throw new Error("Failed to find user");
+				user.id = user?._id;
+				return user;
 			} catch (error) {
 				console.error("Error updating user:", error);
 				throw error;

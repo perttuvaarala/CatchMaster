@@ -7,7 +7,6 @@ const StyleWeather = styled.div`
 	background-color: #48412f;
 	text-align: center;
 	padding: 2rem;
-	height: 40rem;
 `;
 
 function WeatherView() {
