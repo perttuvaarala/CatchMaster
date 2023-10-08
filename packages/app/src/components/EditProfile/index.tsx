@@ -7,7 +7,6 @@ import {
 import { useEffect, useState } from "react";
 
 const KNOWN_FISHING_STYLES = [
-	"Phishing",
 	"Fly Fishing",
 	"Ice Fishing",
 	"Bass Fishing",

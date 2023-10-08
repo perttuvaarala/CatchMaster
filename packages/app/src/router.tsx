@@ -5,6 +5,7 @@ import Map from './views/mapView'
 import Weather from './views/weatherView'
 import Profile from './views/profileView'
 import NewPost from './views/NewPostView'
+import About from './components/About'
 
 export const router = createBrowserRouter([{
   path: '/',
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([{
       {
         path: 'NewPost',
         element: <NewPost />
+      },
+      {
+        path: 'about',
+        element: <About />
       },
     ]
   }
