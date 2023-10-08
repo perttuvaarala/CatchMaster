@@ -68,7 +68,7 @@ function About() {
                     </a>
                 </div>
             </ul>
-            <p>Catchmaster was made in Web Development 2 course at Metropolia University by Group 2</p>
+            <p>Catchmaster was made in Web Development 2 course at Metropolia University of Applied Sciences by Group 2</p>
         </StyleBox>
     )
 }
