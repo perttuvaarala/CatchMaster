@@ -29,6 +29,7 @@ const postResolver = {
   Mutation: {
     createPost: async (_parent: any, args: any, _context: any, _info: any) => {
       try {
+        console.log(args)
         const post = await postModel.create({
           ...args,
           timestamp: new Date(),

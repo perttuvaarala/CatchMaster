@@ -3,6 +3,8 @@ query AllPosts {
 		id
 		lon
 		lat
+		lenght
+		weight
 		content
 		timestamp
 		imagelink
@@ -23,6 +25,8 @@ query AllPosts {
 mutation CreatePost(
 	$lon: Float!
 	$lat: Float!
+	$lenght:Float!
+	$weight:Float!
 	$content: String!
 	$imagelink: String!
 	$baitID: ID!
@@ -32,6 +36,8 @@ mutation CreatePost(
 	createPost(
 		lon: $lon
 		lat: $lat
+		lenght: $lenght
+		weight: $lenght
 		content: $content
 		imagelink: $imagelink
 		baitID: $baitID

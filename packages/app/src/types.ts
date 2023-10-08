@@ -57,8 +57,10 @@ export type MutationCreatePostArgs = {
   fishID: Scalars['ID']['input'];
   imagelink: Scalars['String']['input'];
   lat: Scalars['Float']['input'];
+  lenght: Scalars['Float']['input'];
   lon: Scalars['Float']['input'];
   userID: Scalars['ID']['input'];
+  weight: Scalars['Float']['input'];
 };
 
 
@@ -77,10 +79,12 @@ export type Post = {
   id: Scalars['ID']['output'];
   imagelink: Scalars['String']['output'];
   lat: Scalars['Float']['output'];
+  lenght: Scalars['Float']['output'];
   lon: Scalars['Float']['output'];
   timestamp: Scalars['String']['output'];
   user: User;
   weatherCondition: Scalars['String']['output'];
+  weight: Scalars['Float']['output'];
 };
 
 export type Query = {
