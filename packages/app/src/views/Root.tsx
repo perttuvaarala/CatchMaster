@@ -54,6 +54,7 @@ function Root() {
 			></link>
 
 			<StyledNav>
+				<NavLink className="nav-link" to={"/"}>
 				<div className="wrap">
 					<div className="logo">
 						<img
@@ -65,6 +66,7 @@ function Root() {
 					</div>
 					<div className="head">CatchMaster</div>
 				</div>
+				</NavLink>
 				<div className="nav">
 					<NavLink className="nav-link" to={"/"}>
 						<u>Home</u>
