@@ -43,7 +43,6 @@ function Map() {
 	if (loading) return <p>Loading...</p>;
 	if (error) return `Error! ${error.message}`;
 	if (!data) return <p>Not found</p>;
-	console.log(data.getAllPosts);
 
 	return (
 		<div>
