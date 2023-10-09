@@ -3,12 +3,12 @@ import * as Types from '../../../types';
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions = {} as const;
-export type CurrentUserFragment = { __typename?: 'User', id: string, username: string, email: string, birthdate?: string | null, favouriteFishingStyle?: string | null, baits?: Array<{ __typename?: 'Bait', id: string }> | null };
+export type CurrentUserFragment = { __typename?: 'User', id: string, username: string, email: string, birthdate?: string | null, favouriteFishingStyle?: string | null, baits: Array<{ __typename?: 'Bait', id: string, name: string, brand: string, weight: number, color: string }> };
 
 export type CurrentUserQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type CurrentUserQuery = { __typename?: 'Query', currentUser?: { __typename?: 'User', id: string, username: string, email: string, birthdate?: string | null, favouriteFishingStyle?: string | null, baits?: Array<{ __typename?: 'Bait', id: string }> | null } | null };
+export type CurrentUserQuery = { __typename?: 'Query', currentUser?: { __typename?: 'User', id: string, username: string, email: string, birthdate?: string | null, favouriteFishingStyle?: string | null, baits: Array<{ __typename?: 'Bait', id: string, name: string, brand: string, weight: number, color: string }> } | null };
 
 export type ModifyCurrentUserMutationVariables = Types.Exact<{
   username?: Types.InputMaybe<Types.Scalars['String']['input']>;
@@ -18,7 +18,7 @@ export type ModifyCurrentUserMutationVariables = Types.Exact<{
 }>;
 
 
-export type ModifyCurrentUserMutation = { __typename?: 'Mutation', editUser: { __typename?: 'User', id: string, username: string, email: string, birthdate?: string | null, favouriteFishingStyle?: string | null, baits?: Array<{ __typename?: 'Bait', id: string }> | null } };
+export type ModifyCurrentUserMutation = { __typename?: 'Mutation', editUser: { __typename?: 'User', id: string, username: string, email: string, birthdate?: string | null, favouriteFishingStyle?: string | null, baits: Array<{ __typename?: 'Bait', id: string, name: string, brand: string, weight: number, color: string }> } };
 
 export const CurrentUserFragmentDoc = gql`
     fragment CurrentUser on User {
@@ -29,6 +29,10 @@ export const CurrentUserFragmentDoc = gql`
   favouriteFishingStyle
   baits {
     id
+    name
+    brand
+    weight
+    color
   }
 }
     `;

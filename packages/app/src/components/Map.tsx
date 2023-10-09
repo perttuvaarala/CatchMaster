@@ -71,7 +71,13 @@ function Map() {
 					</Marker>
 					{data.getAllPosts.map((post) => (
 						<Marker key={post.id} position={[post.lat, post.lon]}>
-							<Popup>{post.content}</Popup>
+							<Popup>
+								<div style={{textAlign: "center"}}>
+								<p><b>{post.fish.name}</b></p>
+								<p>{post.weight}kg</p>
+								<p>{post.lenght}cm</p>
+								</div>
+							</Popup>
 						</Marker>
 					))}
 				</MapContainer>
