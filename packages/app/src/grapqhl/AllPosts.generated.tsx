@@ -6,7 +6,7 @@ const defaultOptions = {} as const;
 export type AllPostsQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type AllPostsQuery = { __typename?: 'Query', getAllPosts: Array<{ __typename?: 'Post', id: string, lon: number, lat: number, lenght: number, weight: number, content: string, timestamp: string, imagelink: string, weatherCondition: string, bait: { __typename?: 'Bait', id: string }, user: { __typename?: 'User', username: string, id: string }, fish: { __typename?: 'Fish', id: string } }> };
+export type AllPostsQuery = { __typename?: 'Query', getAllPosts: Array<{ __typename?: 'Post', id: string, lon: number, lat: number, lenght: number, weight: number, content: string, timestamp: string, imagelink: string, weatherCondition: string, bait: { __typename?: 'Bait', id: string }, user: { __typename?: 'User', username: string, id: string }, fish: { __typename?: 'Fish', id: string, name: string } }> };
 
 export type CreatePostMutationVariables = Types.Exact<{
   lon: Types.Scalars['Float']['input'];
@@ -44,6 +44,7 @@ export const AllPostsDocument = gql`
     }
     fish {
       id
+      name
     }
     weatherCondition
   }

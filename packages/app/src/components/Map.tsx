@@ -43,6 +43,7 @@ function Map() {
 	if (loading) return <p>Loading...</p>;
 	if (error) return `Error! ${error.message}`;
 	if (!data) return <p>Not found</p>;
+	console.log(data.getAllPosts);
 
 	return (
 		<div>
@@ -71,7 +72,13 @@ function Map() {
 					</Marker>
 					{data.getAllPosts.map((post) => (
 						<Marker key={post.id} position={[post.lat, post.lon]}>
-							<Popup>{post.content}</Popup>
+							<Popup>
+								<div style={{textAlign: "center"}}>
+								<p><b>{post.fish.name}</b></p>
+								<p>{post.weight}kg</p>
+								<p>{post.lenght}cm</p>
+								</div>
+							</Popup>
 						</Marker>
 					))}
 				</MapContainer>

@@ -17,6 +17,7 @@ query AllPosts {
 		}
 		fish {
 			id
+			name
 		}
 		weatherCondition
 	}
