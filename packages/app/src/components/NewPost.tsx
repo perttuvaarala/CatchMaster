@@ -6,6 +6,7 @@ const NewPost: React.FC = () => {
     const [weight, setWeight] = useState<number | undefined>(undefined);
     const [Content, setContent] = useState('');
     const [image, setImage] = useState<string | null>(null);
+    const [CreatePost] = useCreatePostMutation();
     const currentUser = useCurrentUser();
     
     const handleLengthChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +41,7 @@ const NewPost: React.FC = () => {
           
           const position = await getCurrentLocation();
           const { latitude, longitude } = position.coords;
-          useCreatePostMutation({
+          CreatePost({
             variables: {
               lon:longitude|| 0,
               lat:latitude|| 0,
