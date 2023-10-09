@@ -95,7 +95,8 @@ export type Query = {
   getAllFish: Array<Fish>;
   getAllPosts: Array<Post>;
   getAllUsers: Array<User>;
-  getUsersBaitsByid: Array<Scalars['String']['output']>;
+  getBaitsByID?: Maybe<Bait>;
+  getUserByID: User;
 };
 
 
@@ -104,13 +105,18 @@ export type QueryFishByNameArgs = {
 };
 
 
-export type QueryGetUsersBaitsByidArgs = {
+export type QueryGetBaitsByIdArgs = {
+  id: Scalars['ID']['input'];
+};
+
+
+export type QueryGetUserByIdArgs = {
   id: Scalars['ID']['input'];
 };
 
 export type User = {
   __typename?: 'User';
-  baits?: Maybe<Array<Bait>>;
+  baits: Array<Bait>;
   birthdate?: Maybe<Scalars['String']['output']>;
   email: Scalars['String']['output'];
   favouriteFishingStyle?: Maybe<Scalars['String']['output']>;

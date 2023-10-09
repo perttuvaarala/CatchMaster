@@ -6,6 +6,10 @@ fragment CurrentUser on User {
 	favouriteFishingStyle
 	baits {
 		id
+		name
+		brand
+		weight
+		color
 	}
 }
 

@@ -1,17 +1,16 @@
-import styled from 'styled-components'
-import NewPost from '../components/NewPost' 
+import styled from "styled-components";
+import NewPost from "../components/NewPost";
 
 const StyledMain = styled.div`
-
-  background-color: #1E1E1E;
-`
+	background-color: #48412f;
+`;
 
 function NewPostView() {
-  return (
-   <StyledMain>
-   <NewPost />
-   </StyledMain>
-  )
+	return (
+		<StyledMain>
+			<NewPost />
+		</StyledMain>
+	);
 }
 
-export default NewPostView
+export default NewPostView;

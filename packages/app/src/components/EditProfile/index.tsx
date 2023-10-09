@@ -32,7 +32,7 @@ const KNOWN_FISHING_STYLES = [
 
 const StyledEditProfile = styled.div``;
 
-const StyledButton = styled.input`
+export const StyledInputButton = styled.input`
 	background-color: transparent;
 	padding: 0.75rem 0.25rem;
 	border: 1px solid hsl(92 73% 60% / 1);
@@ -74,7 +74,7 @@ const StyledForm = styled.form`
 	border: 2px solid hsl(43 21% 10% / 1);
 	border-radius: 0.5rem;
 	background-color: rgba(0, 0, 0, 0.075);
-	${StyledButton} {
+	${StyledInputButton} {
 		margin-top: 0.75rem;
 	}
 `;
@@ -157,7 +157,7 @@ function EditProfile() {
 					{KNOWN_FISHING_STYLES.map((style, i) => (
 						<option
 							value={style}
-							key={style}
+							key={i}
 							selected={
 								favoriteFishingStyle === KNOWN_FISHING_STYLES[i]
 							}
@@ -166,10 +166,10 @@ function EditProfile() {
 						</option>
 					))}
 				</StyledSelect>
-				<StyledButton
+				<StyledInputButton
 					type="submit"
 					value={"save changes"}
-				></StyledButton>
+				></StyledInputButton>
 			</StyledForm>
 		</StyledEditProfile>
 	);
