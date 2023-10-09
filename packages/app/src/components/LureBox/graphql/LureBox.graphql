@@ -1,0 +1,33 @@
+fragment Bait on Bait {
+	id
+	name
+	brand
+	weight
+	color
+}
+
+query UserLureBox($id: ID!) {
+	getUserByID(id: $id) {
+		id
+		baits {
+			...Bait
+		}
+	}
+}
+
+query GetAllBaits {
+	getAllBaits {
+		...Bait
+	}
+}
+
+mutation CreateNewBait(
+	$name: String!
+	$brand: String!
+	$color: String!
+	$weight: Float!
+) {
+	createBait(name: $name, brand: $brand, color: $color, weight: $weight) {
+		...Bait
+	}
+}

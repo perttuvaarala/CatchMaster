@@ -6,7 +6,6 @@ const StyledMap = styled.div`
 	flex-direction: column;
 	background-color: #48412f;
 	padding: 2rem;
-	height: 40rem;
 	flex: 0;
 `;
 
