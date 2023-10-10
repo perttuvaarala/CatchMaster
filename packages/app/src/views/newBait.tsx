@@ -53,7 +53,7 @@ const StyledButton = styled.button`
 const NewBaitForm = () => {
 	const currentUser = useCurrentUser();
 	const userID = currentUser?.id;
-	const [baitID, setBaitID] = useState("");
+	const [baitID, setBaitID] = useState("651c1094231992254e2d4c3e");
 
 	const [newBaitName, setNewBaitName] = useState("");
 	const [newBaitBrand, setNewBaitBrand] = useState("");
@@ -113,8 +113,8 @@ const NewBaitForm = () => {
 			onError: (e) => {
 				console.error(e);
 			},
-			onCompleted: (r) => {
-				console.info(r);
+			onCompleted: () => {
+				alert("Added to your lure box!");
 			},
 			refetchQueries: [CurrentUserDocument],
 		});
@@ -135,7 +135,7 @@ const NewBaitForm = () => {
 				{baitData.getAllBaits
 					.concat({
 						id: "newBait",
-						name: "create new bait",
+						name: "Create new bait",
 						brand: "",
 						color: "",
 						weight: -1,

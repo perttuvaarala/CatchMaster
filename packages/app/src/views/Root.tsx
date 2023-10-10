@@ -43,6 +43,8 @@ const StyledContent = styled.div`
 	gap: 1rem;
 	width: 100%;
 	max-width: 800px;
+	border-radius: 1rem;
+	border: 0.25rem solid black;
 `;
 
 function Root() {
@@ -55,17 +57,17 @@ function Root() {
 
 			<StyledNav>
 				<NavLink className="nav-link" to={"/"}>
-				<div className="wrap">
-					<div className="logo">
-						<img
-							src={logo}
-							alt="CatchMaster logo"
-							width="80%"
-							height="100%"
-						></img>
+					<div className="wrap">
+						<div className="logo">
+							<img
+								src={logo}
+								alt="CatchMaster logo"
+								width="80%"
+								height="100%"
+							></img>
+						</div>
+						<div className="head">CatchMaster</div>
 					</div>
-					<div className="head">CatchMaster</div>
-				</div>
 				</NavLink>
 				<div className="nav">
 					<NavLink className="nav-link" to={"/"}>

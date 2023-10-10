@@ -20,7 +20,6 @@ const baitResolver = {
 		) => {
 			try {
 				const bait = await baitModel.findById(args.id);
-				console.log(bait);
 				return bait;
 			} catch (error) {
 				console.error("Error fetching bait:", error);
