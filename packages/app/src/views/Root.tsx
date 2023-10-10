@@ -82,6 +82,9 @@ function Root() {
 					<NavLink className="nav-link" to={"/profile"}>
 						<u>Profile</u>
 					</NavLink>
+					<NavLink className="nav-link" to={"/about"}>
+						<u>About</u>
+					</NavLink>
 					<Login />
 				</div>
 			</StyledNav>
