@@ -58,7 +58,9 @@ function LureBox({ userID }: { userID: string }) {
 			</div>
 			{data.getUserByID.baits.map((bait) => (
 				<StyledBait key={bait.id}>
-					<h4>{bait.name}</h4>
+					<h4 style={{ margin: "0.25rem", marginLeft: "0" }}>
+						{bait.name}
+					</h4>
 					<span>{bait.brand}</span>
 					<span>{bait.color}</span>
 					<span>{bait.weight}g</span>

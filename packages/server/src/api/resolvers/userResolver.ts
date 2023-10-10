@@ -20,7 +20,6 @@ const userReslover = {
 			context: TContext,
 			_info: any,
 		) => {
-			console.log("currentUser", context.user);
 			return context.user;
 		},
 		getAllUsers: async () => {

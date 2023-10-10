@@ -1,5 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import weatherCodes from "./weatherCodes.json";
+import styled from "styled-components";
+
+const StyledWeather = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #48412f;
+	color: #fff;
+`;
 
 function Weather() {
 	const [latitude, setLatitude] = useState<number | null>(null);
@@ -53,15 +64,33 @@ function Weather() {
 			) : error ? (
 				<p>{error}</p>
 			) : (
-				<>
-					<h1>Current Weather</h1>
+				<StyledWeather>
 					{weatherData ? (
 						<>
-							<p>
-								Temperature:{" "}
+							<h1>
+								{" "}
 								{weatherData.current_weather.temperature} °C
-							</p>
-							<p>
+							</h1>
+							<h2>
+								{" "}
+								{
+									weatherCodes[
+										("" +
+											weatherData.current_weather
+												.weathercode +
+											"") as keyof typeof weatherCodes
+									]
+								}
+							</h2>
+							<span>
+								Wind: {weatherData.current_weather.windspeed}{" "}
+								m/s
+							</span>
+							<span>
+								Expected rain:{" "}
+								{weatherData.daily.precipitation_sum[0]} mm
+							</span>{" "}
+							<span>
 								Humidity:{" "}
 								{
 									weatherData.hourly.relativehumidity_2m[
@@ -69,32 +98,25 @@ function Weather() {
 									]
 								}{" "}
 								%
-							</p>
-							<p>
-								Wind: {weatherData.current_weather.windspeed}{" "}
-								m/s
-							</p>
-							<p>
+							</span>
+							<span>
 								Visibility:{" "}
 								{weatherData.hourly.visibility[hourNow] / 1000}{" "}
 								km
-							</p>
-							<p>
+							</span>
+							<br />
+							<span>
 								Sunrise:{" "}
 								{weatherData.daily.sunrise[0].slice(-5)}
-							</p>
-							<p>
+							</span>{" "}
+							<span>
 								Sunset: {weatherData.daily.sunset[0].slice(-5)}
-							</p>
-							<p>
-								Expected rain:{" "}
-								{weatherData.daily.precipitation_sum[0]} mm
-							</p>
+							</span>
 						</>
 					) : (
 						<p>No weather data available.</p>
 					)}
-				</>
+				</StyledWeather>
 			)}
 		</div>
 	);

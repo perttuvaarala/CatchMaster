@@ -38,7 +38,6 @@ const postResolver = {
 				throw new Error("Log in!");
 			}
 			try {
-				console.log(args);
 				const post = await postModel.create({
 					...args,
 					timestamp: new Date(),
