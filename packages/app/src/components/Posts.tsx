@@ -52,7 +52,7 @@ const Post: FC<PostProps> = ({ post }) => {
 			>
 				<p>{post.content}</p>
 			</div>
-			<Image src={post.imagelink} />
+			<Image src={post.imagelink as string} />
 		</StyledPost>
 	);
 };
