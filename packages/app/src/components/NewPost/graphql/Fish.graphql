@@ -1,0 +1,10 @@
+fragment Fish on Fish {
+	id
+	name
+}
+
+query getAllFish {
+	getAllFish {
+		...Fish
+	}
+}
