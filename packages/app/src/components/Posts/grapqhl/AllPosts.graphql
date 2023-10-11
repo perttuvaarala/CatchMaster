@@ -11,12 +11,14 @@ query AllPosts {
 		bait {
 			id
 			name
-			weight
+			brand
 			color
+			weight
 		}
 		user {
 			username
 			id
+			favouriteFishingStyle
 		}
 		fish {
 			id
@@ -36,6 +38,7 @@ mutation CreatePost(
 	$baitID: ID!
 	$userID: ID!
 	$fishID: ID!
+	$weatherCondition: String!
 ) {
 	createPost(
 		lon: $lon
@@ -47,6 +50,7 @@ mutation CreatePost(
 		baitID: $baitID
 		userID: $userID
 		fishID: $fishID
+		weatherCondition: $weatherCondition
 	) {
 		id
 		lon
@@ -60,6 +64,7 @@ mutation CreatePost(
 		user {
 			username
 			id
+			favouriteFishingStyle
 		}
 		fish {
 			id

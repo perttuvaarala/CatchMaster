@@ -28,5 +28,6 @@ type Mutation {
 		baitID: ID!
 		userID: ID!
 		fishID: ID!
+		weatherCondition: String!
 	): Post!
 }

@@ -1,34 +1,30 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L, { LatLngExpression } from "leaflet";
-import {  useEffect, useState } from "react";
-import { useAllPostsQuery } from "../../grapqhl/AllPosts.generated";
+import { useEffect, useState } from "react";
+import { useAllPostsQuery } from "../Posts/grapqhl/AllPosts.generated";
 import logo from "../../assets/marker-icon-2x-red.png";
 import styled from "styled-components";
 import "./index.css";
 
 const StyledMarkerPopup = styled.div`
-  background-color: #48412f;
-  color: white;
-  padding: 0.25rem;
-  text-align: center;
-  margin: 0;
+	background-color: #48412f;
+	color: white;
+	padding: 0.25rem;
+	text-align: center;
+	margin: 0;
 `;
-
-
 
 function Map() {
 	const [position, setPosition] = useState<LatLngExpression | null>(null);
 	const [wait, setLoading] = useState<boolean>(true);
-
 
 	const redMarker = L.icon({
 		iconUrl: logo,
 		iconSize: [25, 41],
 		iconAnchor: [12, 41],
 		popupAnchor: [1, -34],
-		
-	  });
+	});
 
 	useEffect(() => {
 		navigator.geolocation.getCurrentPosition(
@@ -69,24 +65,31 @@ function Map() {
 						width: "100%",
 						margin: "2rem",
 						maxWidth: "90%",
+						borderRadius: "1rem",
 					}}
 				>
 					<TileLayer
 						attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 						url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 					/>
-					<Marker position={position} icon={redMarker} >
-						<Popup>
-							You are here
-						</Popup>
+					<Marker position={position} icon={redMarker}>
+						<Popup>You are here</Popup>
 					</Marker>
 					{data.getAllPosts.map((post) => (
 						<Marker key={post.id} position={[post.lat, post.lon]}>
 							<Popup className=".leaflet-popup-content-wrapper">
 								<StyledMarkerPopup>
-								<p><b>{post.fish.name} {post.weight}kg {post.lenght}cm</b></p>
-								<p>{post.bait.name} {post.bait.weight.toFixed(1)}cm</p>
-								<p>Color: {post.bait.color}</p>
+									<p>
+										<b>
+											{post.fish.name} {post.weight}kg{" "}
+											{post.lenght}cm
+										</b>
+									</p>
+									<p>
+										{post.bait.name}{" "}
+										{post.bait.weight.toFixed(1)}cm
+									</p>
+									<p>Color: {post.bait.color}</p>
 								</StyledMarkerPopup>
 							</Popup>
 						</Marker>

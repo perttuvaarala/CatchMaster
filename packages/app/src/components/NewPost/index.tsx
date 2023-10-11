@@ -1,9 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import {
-	CreatePostDocument,
+	AllPostsDocument,
 	useCreatePostMutation,
-} from "../../grapqhl/AllPosts.generated";
+} from "../Posts/grapqhl/AllPosts.generated";
 import {
 	useGetAllBaitsQuery,
 	useUserLureBoxQuery,
@@ -11,6 +11,9 @@ import {
 import { useGetAllFishQuery } from "./graphql/Fish.generated";
 import { StyledForm, StyledInput, StyledSelect } from "../EditProfile";
 import { StyledButton } from "../../views/newBait";
+import axios from "axios";
+import weatherCodes from "../Weather/weatherCodes.json";
+import { router } from "../../router";
 
 const NewPost: React.FC = () => {
 	const [length, setLength] = useState(0);
@@ -19,6 +22,7 @@ const NewPost: React.FC = () => {
 	const [image, setImage] = useState("");
 	const [baitID, setBaitID] = useState("651c1094231992254e2d4c3e");
 	const [fishID, setFishID] = useState("6526680a31a5f08221d5c342");
+	let weather: string = "";
 
 	const currentUser = useCurrentUser();
 	const [CreatePost] = useCreatePostMutation();
@@ -65,10 +69,27 @@ const NewPost: React.FC = () => {
 
 	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault();
+		const position = await getCurrentLocation();
+		const { latitude, longitude } = position.coords;
+
+		const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=weathercode`;
+		await axios
+			.get(apiUrl)
+			.then((response) => {
+				weather =
+					weatherCodes[
+						("" +
+							response.data.current.weathercode +
+							"") as keyof typeof weatherCodes
+					];
+			})
+			.catch((error) => {
+				throw new Error(
+					"Error fetching weather data: " + error?.message,
+				);
+			});
 
 		try {
-			const position = await getCurrentLocation();
-			const { latitude, longitude } = position.coords;
 			CreatePost({
 				variables: {
 					lon: longitude || 0,
@@ -80,26 +101,19 @@ const NewPost: React.FC = () => {
 					baitID: baitID || "",
 					userID: currentUser?.id || "",
 					fishID: fishID || "",
+					weatherCondition: weather || "",
 				},
 				onError: (e) => {
 					console.error(e);
-					console.log(fishID);
+					alert("Error creating post!");
 				},
 				onCompleted: (r) => {
 					console.info(r);
-					console.log(fishID);
+					alert("Post created successfully!");
+					router.navigate("/");
 				},
-				refetchQueries: [CreatePostDocument],
+				refetchQueries: [AllPostsDocument],
 			});
-			console.log(currentUser?.username);
-			console.log("Length:", length);
-			console.log("Weight:", weight);
-			console.log("Content:", content);
-			console.log("fishID:", fishID);
-			console.log("Image:", image);
-			console.log("Latitude:", latitude);
-			console.log("Longitude:", longitude);
-			console.log(baitID);
 		} catch (e) {
 			console.error("Error getting location:", e);
 		}
@@ -118,14 +132,14 @@ const NewPost: React.FC = () => {
 
 	return (
 		<StyledForm onSubmit={handleSubmit}>
-			<label htmlFor="length">Length:*</label>
+			<label htmlFor="length">Length in cm:*</label>
 			<StyledInput
 				type="number"
 				id="length"
 				value={length}
 				onChange={handleLengthChange}
 			/>
-			<label htmlFor="weight">Weight:*</label>
+			<label htmlFor="weight">Weight in kg:*</label>
 			<StyledInput
 				type="number"
 				id="weight"
@@ -138,6 +152,7 @@ const NewPost: React.FC = () => {
 				id="Content"
 				value={content}
 				onChange={handleContentChange}
+				maxLength={280}
 			/>
 
 			<label htmlFor="image">Image link:</label>

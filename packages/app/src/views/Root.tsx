@@ -43,8 +43,6 @@ const StyledContent = styled.div`
 	gap: 1rem;
 	width: 100%;
 	max-width: 800px;
-	border-radius: 1rem;
-	border: 0.25rem solid black;
 `;
 
 function Root() {

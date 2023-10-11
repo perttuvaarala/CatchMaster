@@ -68,11 +68,9 @@ function Weather() {
 					{weatherData ? (
 						<>
 							<h1>
-								{" "}
 								{weatherData.current_weather.temperature} °C
 							</h1>
 							<h2>
-								{" "}
 								{
 									weatherCodes[
 										("" +

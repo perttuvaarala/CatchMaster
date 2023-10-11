@@ -122,9 +122,11 @@ function EditProfile() {
 			},
 			onError: (e) => {
 				console.error(e);
+				alert("Error updating user!");
 			},
 			onCompleted: (r) => {
 				console.info(r);
+				alert("User updated successfully!");
 			},
 			refetchQueries: [CurrentUserDocument],
 		});

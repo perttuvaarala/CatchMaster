@@ -19,6 +19,8 @@ const StyledNewBait = styled.div`
 	background-color: #48412f;
 	padding: 2rem;
 	flex: 0;
+	border-radius: 1rem;
+	border: 0.25rem solid black;
 `;
 
 const StyledNewBaitForm = styled.form`
@@ -92,9 +94,11 @@ const NewBaitForm = () => {
 			},
 			onError: (e) => {
 				console.error(e);
+				alert("Error creating new bait");
 			},
 			onCompleted: (r) => {
 				console.info(r);
+				alert("New bait created successfully!");
 			},
 			refetchQueries: [GetAllBaitsDocument],
 		});
@@ -112,8 +116,10 @@ const NewBaitForm = () => {
 			},
 			onError: (e) => {
 				console.error(e);
+				alert("Error adding to lure box");
 			},
-			onCompleted: () => {
+			onCompleted: (r) => {
+				console.info(r);
 				alert("Added to your lure box!");
 			},
 			refetchQueries: [CurrentUserDocument],
