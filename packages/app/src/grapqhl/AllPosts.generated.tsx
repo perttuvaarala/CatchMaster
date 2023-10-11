@@ -83,7 +83,7 @@ export const CreatePostDocument = gql`
     lon: $lon
     lat: $lat
     lenght: $lenght
-    weight: $lenght
+    weight: $weight
     content: $content
     imagelink: $imagelink
     baitID: $baitID
