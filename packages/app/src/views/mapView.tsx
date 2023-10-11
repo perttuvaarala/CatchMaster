@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Map from "../components/Map";
+import Map from "../components/Map/index";
 
 const StyledMap = styled.div`
 	display: flex;
