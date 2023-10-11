@@ -36,10 +36,10 @@ const Post: FC<PostProps> = ({ post }) => {
 	return (
 		<StyledPost>
 			<h3>{post.user.username}</h3>
-			<p>{formattedTimestamp}</p>
-			<p>{formattedDate}</p>
+			<p>Time: {formattedTimestamp}</p>
+			<p>Date: {formattedDate}</p>
 			<p>
-				{post.lon} {post.lat}
+				Lon: {post.lon} lat: {post.lat}
 			</p>
 			<div
 				style={{
