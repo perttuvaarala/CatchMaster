@@ -1,0 +1,9 @@
+.leaflet-popup-content-wrapper {
+    background-color: #48412f;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+}
+
+ .leaflet-popup-tip {
+    background-color: #48412f;
+ }

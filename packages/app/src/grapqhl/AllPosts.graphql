@@ -10,6 +10,9 @@ query AllPosts {
 		imagelink
 		bait {
 			id
+			name
+			weight
+			color
 		}
 		user {
 			username
