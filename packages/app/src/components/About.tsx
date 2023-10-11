@@ -6,6 +6,8 @@ const StyledBox = styled.div`
 	background-color: #48412f;
 	text-align: center;
 	padding: 2rem;
+	border-radius: 1rem;
+	border: 0.25rem solid black;
 `;
 
 const StyledSpan = styled.span`

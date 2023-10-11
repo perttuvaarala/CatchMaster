@@ -7,6 +7,8 @@ const StyledMap = styled.div`
 	background-color: #48412f;
 	padding: 2rem;
 	flex: 0;
+	border-radius: 1rem;
+	border: 0.25rem solid black;
 `;
 
 function MapView() {

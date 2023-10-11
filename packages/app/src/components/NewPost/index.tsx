@@ -118,14 +118,14 @@ const NewPost: React.FC = () => {
 
 	return (
 		<StyledForm onSubmit={handleSubmit}>
-			<label htmlFor="length">Length:*</label>
+			<label htmlFor="length">Length in cm:*</label>
 			<StyledInput
 				type="number"
 				id="length"
 				value={length}
 				onChange={handleLengthChange}
 			/>
-			<label htmlFor="weight">Weight:*</label>
+			<label htmlFor="weight">Weight in kg:*</label>
 			<StyledInput
 				type="number"
 				id="weight"
@@ -138,6 +138,7 @@ const NewPost: React.FC = () => {
 				id="Content"
 				value={content}
 				onChange={handleContentChange}
+				maxLength={280}
 			/>
 
 			<label htmlFor="image">Image link:</label>

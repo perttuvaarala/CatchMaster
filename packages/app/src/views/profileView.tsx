@@ -12,6 +12,8 @@ const StyleProfile = styled.div`
 	background-color: #48412f;
 	align-items: baseline;
 	padding: 2rem;
+	border-radius: 1rem;
+	border: 0.25rem solid black;
 `;
 
 const StyledProfileBlock = styled.div`
