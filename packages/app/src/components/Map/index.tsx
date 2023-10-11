@@ -65,6 +65,7 @@ function Map() {
 						width: "100%",
 						margin: "2rem",
 						maxWidth: "90%",
+						borderRadius: "1rem",
 					}}
 				>
 					<TileLayer
