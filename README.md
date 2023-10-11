@@ -15,7 +15,6 @@ https://catchmaster.vercel.app/
 -   [Installation](#installation)
 -   [Development](#development)
 -   [Tests](#tests)
--   [Contribution](#contribution)
 
 ## Features
 
