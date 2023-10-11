@@ -6,7 +6,7 @@ type Post {
 	weight: Float!
 	content: String!
 	timestamp: String!
-	imagelink: String!
+	imagelink: String
 	bait: Bait!
 	user: User!
 	fish: Fish!
@@ -24,7 +24,7 @@ type Mutation {
 		lenght: Float!
 		weight: Float!
 		content: String!
-		imagelink: String!
+		imagelink: String
 		baitID: ID!
 		userID: ID!
 		fishID: ID!

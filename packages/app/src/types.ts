@@ -55,7 +55,7 @@ export type MutationCreatePostArgs = {
   baitID: Scalars['ID']['input'];
   content: Scalars['String']['input'];
   fishID: Scalars['ID']['input'];
-  imagelink: Scalars['String']['input'];
+  imagelink?: InputMaybe<Scalars['String']['input']>;
   lat: Scalars['Float']['input'];
   lenght: Scalars['Float']['input'];
   lon: Scalars['Float']['input'];
@@ -77,7 +77,7 @@ export type Post = {
   content: Scalars['String']['output'];
   fish: Fish;
   id: Scalars['ID']['output'];
-  imagelink: Scalars['String']['output'];
+  imagelink?: Maybe<Scalars['String']['output']>;
   lat: Scalars['Float']['output'];
   lenght: Scalars['Float']['output'];
   lon: Scalars['Float']['output'];
