@@ -4,6 +4,7 @@ import { FC } from "react";
 import Image from "./Image";
 import "../Link.css";
 import { NavLink } from "react-router-dom";
+import { useCurrentUser } from "../hooks/useCurrentUser";
 
 const StyledPost = styled.div`
 	display: flex;
@@ -58,6 +59,7 @@ const Post: FC<PostProps> = ({ post }) => {
 };
 
 export default function Posts() {
+	const user = useCurrentUser();
 	const { loading, error, data } = useAllPostsQuery();
 
 	if (loading) return <p>Loading...</p>;
@@ -69,11 +71,13 @@ export default function Posts() {
 			{data.getAllPosts.map((post) => (
 				<Post key={post.id} post={post} />
 			))}
-			<button className="plusbutton">
-				<NavLink className="plusLink" to={"/NewPost"}>
-					<u className="plusLink">+</u>
-				</NavLink>
-			</button>
+			{user && (
+				<button className="plusbutton">
+					<NavLink className="plusLink" to={"/NewPost"}>
+						<u className="plusLink">+</u>
+					</NavLink>
+				</button>
+			)}
 		</StyledBackground>
 	);
 }
