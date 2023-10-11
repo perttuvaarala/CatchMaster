@@ -36,7 +36,7 @@ const StyledSelect = styled.select`
 	font-size: 1rem;
 `;
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
 	background-color: transparent;
 	padding: 0.75rem 0.25rem;
 	border: 1px solid hsl(92 73% 60% / 1);

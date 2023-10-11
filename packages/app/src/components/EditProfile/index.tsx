@@ -46,7 +46,7 @@ export const StyledInputButton = styled.input`
 	}
 `;
 
-const StyledInput = styled.input`
+export const StyledInput = styled.input`
 	background-color: rgb(36 46 27);
 	border: 1px solid rgb(6, 15, 13);
 	border-radius: 0.5rem;
@@ -56,7 +56,7 @@ const StyledInput = styled.input`
 	font-size: 1rem;
 `;
 
-const StyledSelect = styled.select`
+export const StyledSelect = styled.select`
 	background-color: rgb(36 46 27);
 	border: 1px solid rgb(6, 15, 13);
 	border-radius: 0.5rem;
@@ -66,7 +66,7 @@ const StyledSelect = styled.select`
 	font-size: 1rem;
 `;
 
-const StyledForm = styled.form`
+export const StyledForm = styled.form`
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;

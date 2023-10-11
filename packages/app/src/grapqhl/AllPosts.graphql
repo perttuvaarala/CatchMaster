@@ -26,10 +26,10 @@ query AllPosts {
 mutation CreatePost(
 	$lon: Float!
 	$lat: Float!
-	$lenght:Float!
-	$weight:Float!
+	$lenght: Float!
+	$weight: Float!
 	$content: String!
-	$imagelink: String!
+	$imagelink: String
 	$baitID: ID!
 	$userID: ID!
 	$fishID: ID!

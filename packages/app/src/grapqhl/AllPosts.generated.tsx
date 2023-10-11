@@ -6,7 +6,7 @@ const defaultOptions = {} as const;
 export type AllPostsQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type AllPostsQuery = { __typename?: 'Query', getAllPosts: Array<{ __typename?: 'Post', id: string, lon: number, lat: number, lenght: number, weight: number, content: string, timestamp: string, imagelink: string, weatherCondition: string, bait: { __typename?: 'Bait', id: string }, user: { __typename?: 'User', username: string, id: string }, fish: { __typename?: 'Fish', id: string, name: string } }> };
+export type AllPostsQuery = { __typename?: 'Query', getAllPosts: Array<{ __typename?: 'Post', id: string, lon: number, lat: number, lenght: number, weight: number, content: string, timestamp: string, imagelink?: string | null, weatherCondition: string, bait: { __typename?: 'Bait', id: string }, user: { __typename?: 'User', username: string, id: string }, fish: { __typename?: 'Fish', id: string, name: string } }> };
 
 export type CreatePostMutationVariables = Types.Exact<{
   lon: Types.Scalars['Float']['input'];
@@ -14,14 +14,14 @@ export type CreatePostMutationVariables = Types.Exact<{
   lenght: Types.Scalars['Float']['input'];
   weight: Types.Scalars['Float']['input'];
   content: Types.Scalars['String']['input'];
-  imagelink: Types.Scalars['String']['input'];
+  imagelink?: Types.InputMaybe<Types.Scalars['String']['input']>;
   baitID: Types.Scalars['ID']['input'];
   userID: Types.Scalars['ID']['input'];
   fishID: Types.Scalars['ID']['input'];
 }>;
 
 
-export type CreatePostMutation = { __typename?: 'Mutation', createPost: { __typename?: 'Post', id: string, lon: number, lat: number, content: string, timestamp: string, imagelink: string, weatherCondition: string, bait: { __typename?: 'Bait', id: string }, user: { __typename?: 'User', username: string, id: string }, fish: { __typename?: 'Fish', id: string } } };
+export type CreatePostMutation = { __typename?: 'Mutation', createPost: { __typename?: 'Post', id: string, lon: number, lat: number, content: string, timestamp: string, imagelink?: string | null, weatherCondition: string, bait: { __typename?: 'Bait', id: string }, user: { __typename?: 'User', username: string, id: string }, fish: { __typename?: 'Fish', id: string } } };
 
 
 export const AllPostsDocument = gql`
@@ -78,7 +78,7 @@ export type AllPostsQueryHookResult = ReturnType<typeof useAllPostsQuery>;
 export type AllPostsLazyQueryHookResult = ReturnType<typeof useAllPostsLazyQuery>;
 export type AllPostsQueryResult = Apollo.QueryResult<AllPostsQuery, AllPostsQueryVariables>;
 export const CreatePostDocument = gql`
-    mutation CreatePost($lon: Float!, $lat: Float!, $lenght: Float!, $weight: Float!, $content: String!, $imagelink: String!, $baitID: ID!, $userID: ID!, $fishID: ID!) {
+    mutation CreatePost($lon: Float!, $lat: Float!, $lenght: Float!, $weight: Float!, $content: String!, $imagelink: String, $baitID: ID!, $userID: ID!, $fishID: ID!) {
   createPost(
     lon: $lon
     lat: $lat
