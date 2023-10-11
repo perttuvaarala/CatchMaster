@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { AllPostsQuery, useAllPostsQuery } from "../grapqhl/AllPosts.generated";
+import { AllPostsQuery, useAllPostsQuery } from "./grapqhl/AllPosts.generated";
 import { FC } from "react";
-import Image from "./Image";
+import Image from "../Image";
 import { NavLink } from "react-router-dom";
-import { useCurrentUser } from "../hooks/useCurrentUser";
-import "../Link.css";
+import { useCurrentUser } from "../../hooks/useCurrentUser";
+import "../../Link.css";
 
 const StyledPost = styled.div`
 	display: flex;
@@ -34,7 +34,7 @@ const StyledPostPart = styled.div`
 	flex-direction: column;
 	padding: 1rem;
 	border-radius: 1rem;
-	background-color: hsl(43 21% 11% / 1);
+	background-color: hsl(43 21% 15% / 1);
 	text-align: center;
 	gap: 0.125rem;
 `;
@@ -79,7 +79,10 @@ const Post: FC<PostProps> = ({ post }) => {
 
 	return (
 		<StyledPost>
-			<h3>{post.user.username}</h3>
+			<StyledDiv>
+				<h3>{post.user.username}</h3>
+				<p>Favourite: {post.user.favouriteFishingStyle}</p>
+			</StyledDiv>
 			<StyledDiv>
 				<div>
 					<span>{formattedTimestamp}</span>

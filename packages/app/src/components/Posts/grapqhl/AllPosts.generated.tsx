@@ -1,4 +1,4 @@
-import * as Types from "../types";
+import * as Types from "../../../types";
 
 import { gql } from "@apollo/client";
 import * as Apollo from "@apollo/client";
@@ -26,7 +26,12 @@ export type AllPostsQuery = {
 			color: string;
 			weight: number;
 		};
-		user: { __typename?: "User"; username: string; id: string };
+		user: {
+			__typename?: "User";
+			username: string;
+			id: string;
+			favouriteFishingStyle?: string | null;
+		};
 		fish: { __typename?: "Fish"; id: string; name: string };
 	}>;
 };
@@ -41,6 +46,7 @@ export type CreatePostMutationVariables = Types.Exact<{
 	baitID: Types.Scalars["ID"]["input"];
 	userID: Types.Scalars["ID"]["input"];
 	fishID: Types.Scalars["ID"]["input"];
+	weatherCondition: Types.Scalars["String"]["input"];
 }>;
 
 export type CreatePostMutation = {
@@ -55,7 +61,12 @@ export type CreatePostMutation = {
 		imagelink?: string | null;
 		weatherCondition: string;
 		bait: { __typename?: "Bait"; id: string };
-		user: { __typename?: "User"; username: string; id: string };
+		user: {
+			__typename?: "User";
+			username: string;
+			id: string;
+			favouriteFishingStyle?: string | null;
+		};
 		fish: { __typename?: "Fish"; id: string };
 	};
 };
@@ -81,6 +92,7 @@ export const AllPostsDocument = gql`
 			user {
 				username
 				id
+				favouriteFishingStyle
 			}
 			fish {
 				id
@@ -149,6 +161,7 @@ export const CreatePostDocument = gql`
 		$baitID: ID!
 		$userID: ID!
 		$fishID: ID!
+		$weatherCondition: String!
 	) {
 		createPost(
 			lon: $lon
@@ -160,6 +173,7 @@ export const CreatePostDocument = gql`
 			baitID: $baitID
 			userID: $userID
 			fishID: $fishID
+			weatherCondition: $weatherCondition
 		) {
 			id
 			lon
@@ -173,6 +187,7 @@ export const CreatePostDocument = gql`
 			user {
 				username
 				id
+				favouriteFishingStyle
 			}
 			fish {
 				id
@@ -208,6 +223,7 @@ export type CreatePostMutationFn = Apollo.MutationFunction<
  *      baitID: // value for 'baitID'
  *      userID: // value for 'userID'
  *      fishID: // value for 'fishID'
+ *      weatherCondition: // value for 'weatherCondition'
  *   },
  * });
  */

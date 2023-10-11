@@ -41,7 +41,6 @@ const postResolver = {
 				const post = await postModel.create({
 					...args,
 					timestamp: new Date(),
-					weatherCondition: "Sunny",
 				});
 				return post;
 			} catch (error) {

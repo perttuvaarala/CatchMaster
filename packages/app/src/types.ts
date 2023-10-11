@@ -60,6 +60,7 @@ export type MutationCreatePostArgs = {
   lenght: Scalars['Float']['input'];
   lon: Scalars['Float']['input'];
   userID: Scalars['ID']['input'];
+  weatherCondition: Scalars['String']['input'];
   weight: Scalars['Float']['input'];
 };
 

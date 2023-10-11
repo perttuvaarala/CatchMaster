@@ -2,7 +2,7 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L, { LatLngExpression } from "leaflet";
 import { useEffect, useState } from "react";
-import { useAllPostsQuery } from "../../grapqhl/AllPosts.generated";
+import { useAllPostsQuery } from "../Posts/grapqhl/AllPosts.generated";
 import logo from "../../assets/marker-icon-2x-red.png";
 import styled from "styled-components";
 import "./index.css";

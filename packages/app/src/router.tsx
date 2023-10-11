@@ -4,7 +4,7 @@ import Main from "./views/mainView";
 import Map from "./views/mapView";
 import Weather from "./views/weatherView";
 import Profile from "./views/profileView";
-import NewPostView from "./views/newPostView";
+import NewPostView from "./views/NewPostView";
 import NewBait from "./views/newBait";
 import About from "./components/About";
 

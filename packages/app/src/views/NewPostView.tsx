@@ -7,6 +7,8 @@ const StyledMain = styled.div`
 	border: 0.25rem solid black;
 `;
 
+//remove this comment
+
 function NewPostView() {
 	return (
 		<StyledMain>
