@@ -18,7 +18,7 @@ const NewPost: React.FC = () => {
     const [length, setLength] = useState<number | undefined>(undefined);
     const [weight, setWeight] = useState<number | undefined>(undefined);
     const [Content, setContent] = useState('');
-    const [image, setImage] = useState<string | null>(null);
+    const [image, setImage] = useState("");
     const [baitID, setBaitID] = useState("");
 
   const currentUser = useCurrentUser();
@@ -56,15 +56,7 @@ const NewPost: React.FC = () => {
     };
   
     const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
-      if (e.target.files && e.target.files[0]) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          if (typeof reader.result === 'string') {
-            setImage(reader.result);
-          }
-        };
-        reader.readAsDataURL(e.target.files[0]);
-      }
+      setImage(e.target.value);
     };
   
     const handleSubmit = async (e: FormEvent) => {
@@ -81,7 +73,7 @@ const NewPost: React.FC = () => {
               lenght: length|| 0,
               weight: weight|| 0,
               content: Content|| "",
-              imagelink: "https://imgur.com/gallery/8aeqFkQ"|| "",
+              imagelink: image|| "",
               baitID: baitID||"",
               userID: currentUser?.id || "",
               fishID: "651c188c9e07b36f246ba9ee" ||""
@@ -146,14 +138,13 @@ const NewPost: React.FC = () => {
           />
         </div>
         <div>
-          <label htmlFor="image">Upload Image:</label>
+          <label htmlFor="image">Image link:</label>
           <input
-            type="file"
+            type="text"
             id="image"
-            accept="image/*"
+            value ={image}
             onChange={handleImageChange}
           />
-          {image && <img src={image} alt="Uploaded" style={{ maxWidth: '100px' }} />}
         </div>
         <StyledSelect
 				onChange={(e) =>
