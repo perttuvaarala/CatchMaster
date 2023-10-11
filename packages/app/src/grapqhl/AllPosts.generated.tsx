@@ -1,59 +1,95 @@
-import * as Types from '../types';
+import * as Types from "../types";
 
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
+import { gql } from "@apollo/client";
+import * as Apollo from "@apollo/client";
 const defaultOptions = {} as const;
-export type AllPostsQueryVariables = Types.Exact<{ [key: string]: never; }>;
+export type AllPostsQueryVariables = Types.Exact<{ [key: string]: never }>;
 
-
-export type AllPostsQuery = { __typename?: 'Query', getAllPosts: Array<{ __typename?: 'Post', id: string, lon: number, lat: number, lenght: number, weight: number, content: string, timestamp: string, imagelink?: string | null, weatherCondition: string, bait: { __typename?: 'Bait', id: string, name: string, brand: string, color: string, weight: number }, user: { __typename?: 'User', username: string, id: string }, fish: { __typename?: 'Fish', id: string, name: string } }> };
+export type AllPostsQuery = {
+	__typename?: "Query";
+	getAllPosts: Array<{
+		__typename?: "Post";
+		id: string;
+		lon: number;
+		lat: number;
+		lenght: number;
+		weight: number;
+		content: string;
+		timestamp: string;
+		imagelink?: string | null;
+		weatherCondition: string;
+		bait: {
+			__typename?: "Bait";
+			id: string;
+			name: string;
+			brand: string;
+			color: string;
+			weight: number;
+		};
+		user: { __typename?: "User"; username: string; id: string };
+		fish: { __typename?: "Fish"; id: string; name: string };
+	}>;
+};
 
 export type CreatePostMutationVariables = Types.Exact<{
-  lon: Types.Scalars['Float']['input'];
-  lat: Types.Scalars['Float']['input'];
-  lenght: Types.Scalars['Float']['input'];
-  weight: Types.Scalars['Float']['input'];
-  content: Types.Scalars['String']['input'];
-  imagelink?: Types.InputMaybe<Types.Scalars['String']['input']>;
-  baitID: Types.Scalars['ID']['input'];
-  userID: Types.Scalars['ID']['input'];
-  fishID: Types.Scalars['ID']['input'];
+	lon: Types.Scalars["Float"]["input"];
+	lat: Types.Scalars["Float"]["input"];
+	lenght: Types.Scalars["Float"]["input"];
+	weight: Types.Scalars["Float"]["input"];
+	content: Types.Scalars["String"]["input"];
+	imagelink?: Types.InputMaybe<Types.Scalars["String"]["input"]>;
+	baitID: Types.Scalars["ID"]["input"];
+	userID: Types.Scalars["ID"]["input"];
+	fishID: Types.Scalars["ID"]["input"];
 }>;
 
-
-export type CreatePostMutation = { __typename?: 'Mutation', createPost: { __typename?: 'Post', id: string, lon: number, lat: number, content: string, timestamp: string, imagelink?: string | null, weatherCondition: string, bait: { __typename?: 'Bait', id: string }, user: { __typename?: 'User', username: string, id: string }, fish: { __typename?: 'Fish', id: string } } };
-
+export type CreatePostMutation = {
+	__typename?: "Mutation";
+	createPost: {
+		__typename?: "Post";
+		id: string;
+		lon: number;
+		lat: number;
+		content: string;
+		timestamp: string;
+		imagelink?: string | null;
+		weatherCondition: string;
+		bait: { __typename?: "Bait"; id: string };
+		user: { __typename?: "User"; username: string; id: string };
+		fish: { __typename?: "Fish"; id: string };
+	};
+};
 
 export const AllPostsDocument = gql`
-    query AllPosts {
-  getAllPosts {
-    id
-    lon
-    lat
-    lenght
-    weight
-    content
-    timestamp
-    imagelink
-    bait {
-      id
-      name
-      brand
-      color
-      weight
-    }
-    user {
-      username
-      id
-    }
-    fish {
-      id
-      name
-    }
-    weatherCondition
-  }
-}
-    `;
+	query AllPosts {
+		getAllPosts {
+			id
+			lon
+			lat
+			lenght
+			weight
+			content
+			timestamp
+			imagelink
+			bait {
+				id
+				name
+				brand
+				color
+				weight
+			}
+			user {
+				username
+				id
+			}
+			fish {
+				id
+				name
+			}
+			weatherCondition
+		}
+	}
+`;
 
 /**
  * __useAllPostsQuery__
@@ -70,51 +106,85 @@ export const AllPostsDocument = gql`
  *   },
  * });
  */
-export function useAllPostsQuery(baseOptions?: Apollo.QueryHookOptions<AllPostsQuery, AllPostsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<AllPostsQuery, AllPostsQueryVariables>(AllPostsDocument, options);
-      }
-export function useAllPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllPostsQuery, AllPostsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<AllPostsQuery, AllPostsQueryVariables>(AllPostsDocument, options);
-        }
-export type AllPostsQueryHookResult = ReturnType<typeof useAllPostsQuery>;
-export type AllPostsLazyQueryHookResult = ReturnType<typeof useAllPostsLazyQuery>;
-export type AllPostsQueryResult = Apollo.QueryResult<AllPostsQuery, AllPostsQueryVariables>;
-export const CreatePostDocument = gql`
-    mutation CreatePost($lon: Float!, $lat: Float!, $lenght: Float!, $weight: Float!, $content: String!, $imagelink: String, $baitID: ID!, $userID: ID!, $fishID: ID!) {
-  createPost(
-    lon: $lon
-    lat: $lat
-    lenght: $lenght
-    weight: $weight
-    content: $content
-    imagelink: $imagelink
-    baitID: $baitID
-    userID: $userID
-    fishID: $fishID
-  ) {
-    id
-    lon
-    lat
-    content
-    timestamp
-    imagelink
-    bait {
-      id
-    }
-    user {
-      username
-      id
-    }
-    fish {
-      id
-    }
-    weatherCondition
-  }
+export function useAllPostsQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		AllPostsQuery,
+		AllPostsQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<AllPostsQuery, AllPostsQueryVariables>(
+		AllPostsDocument,
+		options,
+	);
 }
-    `;
-export type CreatePostMutationFn = Apollo.MutationFunction<CreatePostMutation, CreatePostMutationVariables>;
+export function useAllPostsLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		AllPostsQuery,
+		AllPostsQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<AllPostsQuery, AllPostsQueryVariables>(
+		AllPostsDocument,
+		options,
+	);
+}
+export type AllPostsQueryHookResult = ReturnType<typeof useAllPostsQuery>;
+export type AllPostsLazyQueryHookResult = ReturnType<
+	typeof useAllPostsLazyQuery
+>;
+export type AllPostsQueryResult = Apollo.QueryResult<
+	AllPostsQuery,
+	AllPostsQueryVariables
+>;
+export const CreatePostDocument = gql`
+	mutation CreatePost(
+		$lon: Float!
+		$lat: Float!
+		$lenght: Float!
+		$weight: Float!
+		$content: String!
+		$imagelink: String
+		$baitID: ID!
+		$userID: ID!
+		$fishID: ID!
+	) {
+		createPost(
+			lon: $lon
+			lat: $lat
+			lenght: $lenght
+			weight: $weight
+			content: $content
+			imagelink: $imagelink
+			baitID: $baitID
+			userID: $userID
+			fishID: $fishID
+		) {
+			id
+			lon
+			lat
+			content
+			timestamp
+			imagelink
+			bait {
+				id
+			}
+			user {
+				username
+				id
+			}
+			fish {
+				id
+			}
+			weatherCondition
+		}
+	}
+`;
+export type CreatePostMutationFn = Apollo.MutationFunction<
+	CreatePostMutation,
+	CreatePostMutationVariables
+>;
 
 /**
  * __useCreatePostMutation__
@@ -141,10 +211,24 @@ export type CreatePostMutationFn = Apollo.MutationFunction<CreatePostMutation, C
  *   },
  * });
  */
-export function useCreatePostMutation(baseOptions?: Apollo.MutationHookOptions<CreatePostMutation, CreatePostMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreatePostMutation, CreatePostMutationVariables>(CreatePostDocument, options);
-      }
-export type CreatePostMutationHookResult = ReturnType<typeof useCreatePostMutation>;
-export type CreatePostMutationResult = Apollo.MutationResult<CreatePostMutation>;
-export type CreatePostMutationOptions = Apollo.BaseMutationOptions<CreatePostMutation, CreatePostMutationVariables>;
+export function useCreatePostMutation(
+	baseOptions?: Apollo.MutationHookOptions<
+		CreatePostMutation,
+		CreatePostMutationVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useMutation<CreatePostMutation, CreatePostMutationVariables>(
+		CreatePostDocument,
+		options,
+	);
+}
+export type CreatePostMutationHookResult = ReturnType<
+	typeof useCreatePostMutation
+>;
+export type CreatePostMutationResult =
+	Apollo.MutationResult<CreatePostMutation>;
+export type CreatePostMutationOptions = Apollo.BaseMutationOptions<
+	CreatePostMutation,
+	CreatePostMutationVariables
+>;

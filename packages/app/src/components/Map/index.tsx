@@ -2,8 +2,18 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L, { LatLngExpression } from "leaflet";
 import { useEffect, useState } from "react";
-import { useAllPostsQuery } from "../grapqhl/AllPosts.generated";
-import logo from "../assets/marker-icon-2x-red.png";
+import { useAllPostsQuery } from "../../grapqhl/AllPosts.generated";
+import logo from "../../assets/marker-icon-2x-red.png";
+import styled from "styled-components";
+import "./index.css";
+
+const StyledMarkerPopup = styled.div`
+	background-color: #48412f;
+	color: white;
+	padding: 0.25rem;
+	text-align: center;
+	margin: 0;
+`;
 
 function Map() {
 	const [position, setPosition] = useState<LatLngExpression | null>(null);
@@ -55,7 +65,6 @@ function Map() {
 						width: "100%",
 						margin: "2rem",
 						maxWidth: "90%",
-						borderRadius: "1rem",
 					}}
 				>
 					<TileLayer
@@ -67,14 +76,20 @@ function Map() {
 					</Marker>
 					{data.getAllPosts.map((post) => (
 						<Marker key={post.id} position={[post.lat, post.lon]}>
-							<Popup>
-								<div style={{ textAlign: "center" }}>
+							<Popup className=".leaflet-popup-content-wrapper">
+								<StyledMarkerPopup>
 									<p>
-										<b>{post.fish.name}</b>
+										<b>
+											{post.fish.name} {post.weight}kg{" "}
+											{post.lenght}cm
+										</b>
 									</p>
-									<p>{post.weight}kg</p>
-									<p>{post.lenght}cm</p>
-								</div>
+									<p>
+										{post.bait.name}{" "}
+										{post.bait.weight.toFixed(1)}cm
+									</p>
+									<p>Color: {post.bait.color}</p>
+								</StyledMarkerPopup>
 							</Popup>
 						</Marker>
 					))}

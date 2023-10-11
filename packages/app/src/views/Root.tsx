@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, Link } from "react-router-dom";
 import "../Link.css";
 import logo from "../assets/catchmaster-logo.png";
 import Login from "../components/Login";
@@ -54,19 +54,17 @@ function Root() {
 			></link>
 
 			<StyledNav>
-				<NavLink className="nav-link" to={"/"}>
 					<div className="wrap">
-						<div className="logo">
+						<Link className="logo" to={"/"}>
 							<img
 								src={logo}
 								alt="CatchMaster logo"
 								width="80%"
 								height="100%"
 							></img>
-						</div>
-						<div className="head">CatchMaster</div>
+						</Link>
+						<Link className="head" to={"/"}>CatchMaster</Link>
 					</div>
-				</NavLink>
 				<div className="nav">
 					<NavLink className="nav-link" to={"/"}>
 						<u>Home</u>
