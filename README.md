@@ -53,7 +53,7 @@ Before you begin installation, ensure you have met the following requirement:
    npm install
 ```
 
-4. Create .env files for the frontend (/app) and for the backend (/server) based on .env.samples
+4. Create .env files for the frontend (\app) and for the backend (\server) based on .env.samples
 
 ## Development
 
