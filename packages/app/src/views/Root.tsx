@@ -3,6 +3,7 @@ import { Outlet, NavLink, Link } from "react-router-dom";
 import "../Link.css";
 import logo from "../assets/catchmaster-logo.png";
 import Login from "../components/Login";
+import { useState } from "react";
 
 const StyledRoot = styled.div`
 	display: flex;
@@ -18,6 +19,21 @@ const StyledNav = styled.div`
 	align-items: center;
 	width: 100%;
 	background-color: #d8fbb8;
+	@media (max-width: 767px) {
+		display: none;
+	  }
+`;
+const MobileNav = styled.div`
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+	height: 5.5rem;
+	align-items: center;
+	width: 100%;
+	background-color: #d8fbb8;
+	@media (min-width: 768px) {
+		display: none;
+	  }
 `;
 
 const StyledFooter = styled.div`
@@ -45,8 +61,17 @@ const StyledContent = styled.div`
 	max-width: 800px;
 `;
 
+
 function Root() {
+	const [menuOpen, setMenuOpen] = useState(false);
+	const handleToggleMenu = () => {
+		setMenuOpen(!menuOpen);
+	  };
+	  const close = () => {
+		setMenuOpen(false)
+	  }
 	return (
+		
 		<StyledRoot>
 			<link
 				href="https://fonts.googleapis.com/css?family=Advent Pro"
@@ -66,6 +91,7 @@ function Root() {
 						<Link className="head" to={"/"}>CatchMaster</Link>
 					</div>
 				<div className="nav">
+					
 					<NavLink className="nav-link" to={"/"}>
 						<u>Home</u>
 					</NavLink>
@@ -78,12 +104,46 @@ function Root() {
 					<NavLink className="nav-link" to={"/profile"}>
 						<u>Profile</u>
 					</NavLink>
-					<NavLink className="nav-link" to={"/about"}>
+					<NavLink className="nav-link" to={"/profile"}>
 						<u>About</u>
 					</NavLink>
 					<Login />
 				</div>
 			</StyledNav>
+			<MobileNav>
+					<div className="wrap">
+						<Link className="logo" to={"/"}>
+							<img
+								src={logo}
+								alt="CatchMaster logo"
+								width="80%"
+								height="100%"
+							></img>
+						</Link>
+						<Link className="head" to={"/"}>CatchMaster</Link>
+					</div>
+				
+				<div className="nav">
+				<div className="hamburger-menu">
+      <div className="hamburger-icon" onClick={handleToggleMenu}>
+        &#9776; 
+      </div>
+      {menuOpen && (
+        <div className="menu-links">
+			<p className="close" onClick={close}>X</p>
+          <Link to="/"onClick={close}>Home</Link>
+          <Link to="/map"onClick={close}>Map</Link>
+          <Link to="/weather"onClick={close}>Weather</Link>
+		  <Link to="/profile"onClick={close}>profile</Link>
+		  <Link to="/about"onClick={close}>About</Link>
+		  <Login />
+        </div>
+      )}
+    </div>
+					
+					
+				</div>
+			</MobileNav>
 
 			<StyledContentWrapper>
 				<StyledContent>

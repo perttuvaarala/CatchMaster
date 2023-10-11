@@ -65,3 +65,41 @@ a.nav-link {
 	color: #000000;
 	text-decoration: none;
 }
+.hamburger-menu {
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .hamburger-icon {
+	cursor: pointer;
+	color: #000000;
+	font-size: 50px;
+  }
+  
+  .menu-links {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	background-color: #d8fbb8;
+	width: 50%;
+	text-align: center;
+	position:absolute
+
+  }
+  
+  .menu-links a {
+	padding: 10px;
+	text-decoration: none;
+	color: black;
+  }
+  
+  .menu-links a:hover {
+	background-color: lightgray;
+  }
+  .close{
+	color: #000000;
+	font-size: 20px;
+	text-align: right;
+	font-weight: bold;
+
+  }
