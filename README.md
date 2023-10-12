@@ -14,6 +14,7 @@ https://catchmaster.vercel.app/
 -   [Prerequisites](#prerequisites)
 -   [Installation](#installation)
 -   [Development](#development)
+-   [Adding new dependencies](#adding-new-dependencies)
 -   [Tests](#tests)
 
 ## Features
@@ -31,6 +32,7 @@ https://catchmaster.vercel.app/
 -   MongoDB Atlas
 -   NodeJS
 -   Express.js
+-  Vite with React
 
 ## Dependencies
 
@@ -61,7 +63,7 @@ Before you begin installation, ensure you have met the following requirement:
 
 **Backend**
 
-First navigate to the project directory
+Navigate to the project directory
 
 then run:
 
@@ -71,15 +73,29 @@ then run:
 
 **Frontend**
 
-First navigate to \Catchmaster\packages\app
+Navigate to the project directory
 
 then run:
 
 ```bash
-   npm run dev
+   npm run dev -w app
 ```
 
 -   Using these commands launches the development server to the ports configurated in the .env file
+
+## Adding new dependencies 
+
+-   To add new dependencies to the frontend, run the following command:
+
+```bash
+   npm install <package-name> -w app
+```
+
+-   To add new dependencies to the backend, run the following command:
+
+```bash
+   npm install <package-name> -w server
+```
 
 ## Tests
 

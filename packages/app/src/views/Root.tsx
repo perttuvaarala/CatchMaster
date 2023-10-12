@@ -61,6 +61,8 @@ const StyledContent = styled.div`
 	max-width: 800px;
 `;
 
+const year = new Date().getFullYear();
+
 
 function Root() {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -151,7 +153,7 @@ function Root() {
 				</StyledContent>
 			</StyledContentWrapper>
 
-			<StyledFooter>© 2023 Group 2, Inc.</StyledFooter>
+			<StyledFooter>© {year} Group 2, Inc.</StyledFooter>
 		</StyledRoot>
 	);
 }
