@@ -89,13 +89,18 @@ const startServer = async () => {
 
 	await server.start();
 
-	app.use(
-		session({
-			secret: config.SESSION_SECRET,
-			resave: false,
-			saveUninitialized: false,
-		}),
-	);
+    app.use(
+        session({
+            secret: config.SESSION_SECRET,
+            resave: false,
+            cookie: {
+                sameSite: 'none',
+                secure: true,
+                httpOnly: true
+            },
+            saveUninitialized: false,
+        }),
+    );
 	app.use(passport.initialize());
 	app.use(passport.session());
 
