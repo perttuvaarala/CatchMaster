@@ -124,8 +124,8 @@ const startServer = async () => {
 			}}
 	));
 
-	httpServer.listen({ port: 3000 }, () =>
-		console.log(`🚀 Server ready at port 3000`),
+	httpServer.listen({ port: config.PORT }, () =>
+		console.log(`🚀 Server ready at port ${config.PORT}`),
 	);
 };
 
