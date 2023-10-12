@@ -12,6 +12,7 @@ import {
 	CurrentUserDocument,
 	useModifyCurrentUserMutation,
 } from "../hooks/useCurrentUser/graphql/CurrentUser.generated";
+import { router } from "../router";
 
 const StyledNewBait = styled.div`
 	display: flex;
@@ -121,6 +122,7 @@ const NewBaitForm = () => {
 			onCompleted: (r) => {
 				console.info(r);
 				alert("Added to your lure box!");
+				router.navigate("/profile");
 			},
 			refetchQueries: [CurrentUserDocument],
 		});
