@@ -24,7 +24,7 @@ const parseEnv = <T extends string>(keys: T[]) => {
 	return Object.fromEntries(entries) as Record<T, string>;
 };
 
-export const config = parseEnv([
+export const config={... parseEnv([
 	"DATABASE_URL",
 	"GOOGLE_CLIENT_ID",
 	"GOOGLE_CLIENT_SECRET",
@@ -32,4 +32,4 @@ export const config = parseEnv([
 	"APP_URL",
 	"SESSION_SECRET",
 	"SESSION_COOKIE_NAME",
-]);
+]), PORT: process.env.PORT || "3000"};
