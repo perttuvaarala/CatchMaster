@@ -49,8 +49,6 @@ passport.use(
 );
 
 passport.serializeUser(function (user, done) {
-
-
 	const email = (user as User)?.email;
 	if (email) {
 		return done(null, email);
@@ -59,7 +57,6 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(async function (email: string, done) {
-
 	const user = await userModel.findOne({ email });
 	if (user) {
 		return done(null, user);
@@ -73,7 +70,6 @@ const startServer = async () => {
 	const app = express();
 	const httpServer = http.createServer(app);
 
-
 	const server = new ApolloServer<TContext>({
 		typeDefs,
 		resolvers,
@@ -82,25 +78,20 @@ const startServer = async () => {
 
 	const corsOptions = {
 		origin: config.APP_URL,
-		methods: ["GET","POST"],
+		methods: ["GET", "POST"],
 		credentials: true,
 		optionsSuccessStatus: 204,
 	};
 
 	await server.start();
 
-    app.use(
-        session({
-            secret: config.SESSION_SECRET,
-            resave: false,
-            cookie: {
-                sameSite: 'none',
-                secure: true,
-                httpOnly: true
-            },
-            saveUninitialized: false,
-        }),
-    );
+	app.use(
+		session({
+			secret: config.SESSION_SECRET,
+			resave: false,
+			saveUninitialized: false,
+		}),
+	);
 	app.use(passport.initialize());
 	app.use(passport.session());
 
@@ -114,7 +105,12 @@ const startServer = async () => {
 		"/auth/google/callback",
 		cors<cors.CorsRequest>(corsOptions),
 		passport.authenticate("google", { failureRedirect: config.APP_URL }),
-		function (req, res) {
+		(req, res) => {
+			res.cookie(config.SESSION_COOKIE_NAME, req.sessionID, {
+				httpOnly: true,
+				sameSite: "none",
+				secure: true,
+			});
 			res.redirect(config.APP_URL);
 		},
 	);
@@ -123,11 +119,12 @@ const startServer = async () => {
 		"/",
 		cors<cors.CorsRequest>(corsOptions),
 		json(),
-	expressMiddleware(server, {
+		expressMiddleware(server, {
 			context: async ({ req }): Promise<TContext> => {
 				return { user: req.user as User | undefined };
-			}}
-	));
+			},
+		}),
+	);
 
 	httpServer.listen({ port: config.PORT }, () =>
 		console.log(`🚀 Server ready at port ${config.PORT}`),
