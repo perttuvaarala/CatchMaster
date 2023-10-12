@@ -73,7 +73,9 @@ function Map() {
 						url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 					/>
 					<Marker position={position} icon={redMarker}>
-						<Popup>You are here</Popup>
+						<Popup className=".leaflet-popup-content-wrapper">
+							<StyledMarkerPopup>You are here</StyledMarkerPopup>
+						</Popup>
 					</Marker>
 					{data.getAllPosts.map((post) => (
 						<Marker key={post.id} position={[post.lat, post.lon]}>
