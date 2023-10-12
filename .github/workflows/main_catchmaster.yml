@@ -34,7 +34,6 @@ jobs:
               run: |
                   npm install -w server
                   npm run build -w server
-                  npm run start -w server
 
             - name: Upload artifact for deployment job
               uses: actions/upload-artifact@v2
