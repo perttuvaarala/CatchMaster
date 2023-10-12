@@ -32,9 +32,9 @@ jobs:
                   SESSION_COOKIE_NAME: ${{ secrets.SESSION_COOKIE_NAME }}
                   VITE_SERVER_URL: ${{ secrets.VITE_SERVER_URL }}
               run: |
-                  npm install
-                  npm run build --if-present
-                  npm run test --if-present
+                  npm install -w server
+                  npm run build
+                  npm run start
 
             - name: Upload artifact for deployment job
               uses: actions/upload-artifact@v2

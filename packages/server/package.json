@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node src/index.ts",
+    "build": "tsc",
     "gen:schema": "graphql-codegen --config codegen.schema.yml",
-    "start": "node dist/src/index.js"
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",

@@ -73,6 +73,7 @@ const startServer = async () => {
 	const app = express();
 	const httpServer = http.createServer(app);
 
+
 	const server = new ApolloServer<TContext>({
 		typeDefs,
 		resolvers,
