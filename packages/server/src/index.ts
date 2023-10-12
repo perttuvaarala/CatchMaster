@@ -82,7 +82,7 @@ const startServer = async () => {
 
 	const corsOptions = {
 		origin: config.APP_URL,
-		methods: "GET",
+		methods: ["GET","POST"],
 		credentials: true,
 		optionsSuccessStatus: 204,
 	};
