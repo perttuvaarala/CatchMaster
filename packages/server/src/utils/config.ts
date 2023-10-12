@@ -32,4 +32,4 @@ export const config={... parseEnv([
 	"APP_URL",
 	"SESSION_SECRET",
 	"SESSION_COOKIE_NAME",
-]), PORT: process.env.PORT || "3000"};
+]), PORT: process.env.PORT || "8080"};
