@@ -21,7 +21,7 @@ const StyledNav = styled.div`
 	background-color: #d8fbb8;
 	@media (max-width: 767px) {
 		display: none;
-	  }
+	}
 `;
 const MobileNav = styled.div`
 	display: flex;
@@ -33,7 +33,7 @@ const MobileNav = styled.div`
 	background-color: #d8fbb8;
 	@media (min-width: 768px) {
 		display: none;
-	  }
+	}
 `;
 
 const StyledFooter = styled.div`
@@ -63,37 +63,31 @@ const StyledContent = styled.div`
 
 const year = new Date().getFullYear();
 
-
 function Root() {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const handleToggleMenu = () => {
 		setMenuOpen(!menuOpen);
-	  };
-	  const close = () => {
-		setMenuOpen(false)
-	  }
+	};
+	const close = () => {
+		setMenuOpen(false);
+	};
 	return (
-		
 		<StyledRoot>
-			<link
-				href="https://fonts.googleapis.com/css?family=Advent Pro"
-				rel="stylesheet"
-			></link>
-
 			<StyledNav>
-					<div className="wrap">
-						<Link className="logo" to={"/"}>
-							<img
-								src={logo}
-								alt="CatchMaster logo"
-								width="80%"
-								height="100%"
-							></img>
-						</Link>
-						<Link className="head" to={"/"}>CatchMaster</Link>
-					</div>
+				<div className="wrap">
+					<Link className="logo" to={"/"}>
+						<img
+							src={logo}
+							alt="CatchMaster logo"
+							width="80%"
+							height="100%"
+						></img>
+					</Link>
+					<Link className="head" to={"/"}>
+						CatchMaster
+					</Link>
+				</div>
 				<div className="nav">
-					
 					<NavLink className="nav-link" to={"/"}>
 						<u>Home</u>
 					</NavLink>
@@ -106,44 +100,59 @@ function Root() {
 					<NavLink className="nav-link" to={"/profile"}>
 						<u>Profile</u>
 					</NavLink>
-					<NavLink className="nav-link" to={"/profile"}>
+					<NavLink className="nav-link" to={"/about"}>
 						<u>About</u>
 					</NavLink>
 					<Login />
 				</div>
 			</StyledNav>
 			<MobileNav>
-					<div className="wrap">
-						<Link className="logo" to={"/"}>
-							<img
-								src={logo}
-								alt="CatchMaster logo"
-								width="80%"
-								height="100%"
-							></img>
-						</Link>
-						<Link className="head" to={"/"}>CatchMaster</Link>
-					</div>
-				
+				<div className="wrap">
+					<Link className="logo" to={"/"}>
+						<img
+							src={logo}
+							alt="CatchMaster logo"
+							width="80%"
+							height="100%"
+						></img>
+					</Link>
+					<Link className="head" to={"/"}>
+						CatchMaster
+					</Link>
+				</div>
+
 				<div className="nav">
-				<div className="hamburger-menu">
-      <div className="hamburger-icon" onClick={handleToggleMenu}>
-        &#9776; 
-      </div>
-      {menuOpen && (
-        <div className="menu-links">
-			<p className="close" onClick={close}>X</p>
-          <Link to="/"onClick={close}>Home</Link>
-          <Link to="/map"onClick={close}>Map</Link>
-          <Link to="/weather"onClick={close}>Weather</Link>
-		  <Link to="/profile"onClick={close}>profile</Link>
-		  <Link to="/about"onClick={close}>About</Link>
-		  <Login />
-        </div>
-      )}
-    </div>
-					
-					
+					<div className="hamburger-menu">
+						<div
+							className="hamburger-icon"
+							onClick={handleToggleMenu}
+						>
+							&#9776;
+						</div>
+						{menuOpen && (
+							<div className="menu-links">
+								<p className="close" onClick={close}>
+									X
+								</p>
+								<Link to="/" onClick={close}>
+									Home
+								</Link>
+								<Link to="/map" onClick={close}>
+									Map
+								</Link>
+								<Link to="/weather" onClick={close}>
+									Weather
+								</Link>
+								<Link to="/profile" onClick={close}>
+									Profile
+								</Link>
+								<Link to="/about" onClick={close}>
+									About
+								</Link>
+								<Login />
+							</div>
+						)}
+					</div>
 				</div>
 			</MobileNav>
 
