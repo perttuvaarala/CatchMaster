@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { useUserLureBoxQuery } from "./graphql/LureBox.generated";
 import { Link } from "react-router-dom";
+import image from "../../assets/trashcan.png";
+import {
+	CurrentUserDocument,
+	useModifyCurrentUserMutation,
+} from "../../hooks/useCurrentUser/graphql/CurrentUser.generated";
 
 const BaitsWrapper = styled.div`
 	display: flex;
@@ -32,8 +37,31 @@ const StyledLink = styled(Link)`
 	}
 	text-align: center;
 `;
+const StyledDiv = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+`;
+const StyledBaitInfo = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+`;
+
+const StyledDeleteButton = styled.img`
+	width: 1.5rem;
+	height: 1.5rem;
+	cursor: pointer;
+	background-color: #d9d9d9;
+	border-radius: 0.25rem;
+	&:hover {
+		background-color: white;
+	}
+`;
 
 function LureBox({ userID }: { userID: string }) {
+	const [modifyUser] = useModifyCurrentUserMutation();
 	const { data, loading, error } = useUserLureBoxQuery({
 		variables: {
 			id: userID,
@@ -43,6 +71,26 @@ function LureBox({ userID }: { userID: string }) {
 	if (loading) return <p>Loading...</p>;
 	if (error) return `Error! ${error.message}`;
 	if (!data) return <p>Not found</p>;
+
+	const handleDelete = (id: string) => {
+		const updatedBaits = data.getUserByID.baits
+			.filter((bait: { id: string }) => bait.id !== id)
+			.map((bait: { id: string }) => bait.id);
+
+		modifyUser({
+			variables: {
+				baitIDs: updatedBaits,
+			},
+			onCompleted: () => {
+				alert("Bait deleted");
+			},
+			onError: () => {
+				alert("Error");
+			},
+			refetchQueries: [CurrentUserDocument],
+		});
+	};
+
 	return (
 		<BaitsWrapper>
 			<div
@@ -58,12 +106,21 @@ function LureBox({ userID }: { userID: string }) {
 			</div>
 			{data.getUserByID.baits.map((bait) => (
 				<StyledBait key={bait.id}>
-					<h4 style={{ margin: "0.25rem", marginLeft: "0" }}>
-						{bait.name}
-					</h4>
-					<span>{bait.brand}</span>
-					<span>{bait.color}</span>
-					<span>{bait.weight}g</span>
+					<StyledDiv>
+						<StyledBaitInfo>
+							<h4 style={{ margin: "0.25rem", marginLeft: "0" }}>
+								{bait.name}
+							</h4>
+							<span>{bait.brand}</span>
+							<span>{bait.color}</span>
+							<span>{bait.weight}g</span>
+						</StyledBaitInfo>
+						<StyledDeleteButton
+							src={image}
+							alt="delete"
+							onClick={() => handleDelete(bait.id)}
+						></StyledDeleteButton>
+					</StyledDiv>
 				</StyledBait>
 			))}
 		</BaitsWrapper>
