@@ -12,7 +12,7 @@ const serverUri = import.meta.env.VITE_SERVER_URL;
 if (!serverUri) throw new Error("VITE_SERVER_URL is not defined");
 
 const client = new ApolloClient({
-	uri: serverUri,
+	uri: serverUri + `/graphql`,
 	cache: new InMemoryCache(),
 	credentials: "include",
 });
