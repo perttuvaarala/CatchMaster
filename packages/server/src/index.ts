@@ -117,6 +117,7 @@ const startServer = async () => {
 		cors<cors.CorsRequest>(corsOptions),
 		passport.authenticate("google", { failureRedirect: config.APP_URL }),
 		(req, res) => {
+			console.log("Cookie onnistui")
 			res.cookie(config.SESSION_COOKIE_NAME, req.sessionID, {
 				httpOnly: true,
 				sameSite: "none",
