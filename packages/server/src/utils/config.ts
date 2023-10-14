@@ -24,12 +24,16 @@ const parseEnv = <T extends string>(keys: T[]) => {
 	return Object.fromEntries(entries) as Record<T, string>;
 };
 
-export const config={... parseEnv([
-	"DATABASE_URL",
-	"GOOGLE_CLIENT_ID",
-	"GOOGLE_CLIENT_SECRET",
-	"GOOGLE_CALLBACK_URL",
-	"APP_URL",
-	"SESSION_SECRET",
-	"SESSION_COOKIE_NAME",
-]), PORT: process.env.PORT || "8080"};
+export const config = {
+	...parseEnv([
+		"DATABASE_URL",
+		"GOOGLE_CLIENT_ID",
+		"GOOGLE_CLIENT_SECRET",
+		"GOOGLE_CALLBACK_URL",
+		"APP_URL",
+		"SESSION_SECRET",
+		"SESSION_COOKIE_NAME",
+	]),
+	PORT: process.env.PORT || "8080",
+	SESSION_COOKIE_DOMAIN: process.env.SESSION_COOKIE_DOMAIN || "vercel.app",
+};
