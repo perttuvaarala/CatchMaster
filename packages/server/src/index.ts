@@ -10,7 +10,7 @@ import http from "http";
 import passport from "passport";
 import { config } from "./utils/config";
 import userModel, { User } from "./api/models/userModel";
-import cors from "cors";
+import cors, { CorsOptions } from "cors";
 import { json } from "body-parser";
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
 
@@ -76,10 +76,10 @@ const startServer = async () => {
 		plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 	});
 
-	const corsOptions = {
+	const corsOptions: CorsOptions = {
 		origin: config.APP_URL,
-		methods: ["GET", "POST"],
 		credentials: true,
+
 		optionsSuccessStatus: 204,
 	};
 
@@ -90,6 +90,12 @@ const startServer = async () => {
 			secret: config.SESSION_SECRET,
 			resave: false,
 			saveUninitialized: false,
+			cookie: {
+				httpOnly: true,
+				sameSite: "none",
+				secure: true,
+				domain: config.SESSION_COOKIE_DOMAIN,
+			},
 		}),
 	);
 	app.use(passport.initialize());
@@ -117,13 +123,7 @@ const startServer = async () => {
 		cors<cors.CorsRequest>(corsOptions),
 		passport.authenticate("google", { failureRedirect: config.APP_URL }),
 		(req, res) => {
-			console.log("Cookie onnistui")
-			res.cookie(config.SESSION_COOKIE_NAME, req.sessionID, {
-				httpOnly: true,
-				sameSite: "none",
-				secure: true,
-				domain: config.SESSION_COOKIE_DOMAIN
-			});
+			console.log("Cookie onnistui", req, res)
 			res.redirect(config.APP_URL);
 		},
 	);
