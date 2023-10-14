@@ -79,7 +79,6 @@ const startServer = async () => {
 	const corsOptions: CorsOptions = {
 		origin: config.APP_URL,
 		credentials: true,
-
 		optionsSuccessStatus: 204,
 	};
 
@@ -90,12 +89,6 @@ const startServer = async () => {
 			secret: config.SESSION_SECRET,
 			resave: false,
 			saveUninitialized: false,
-			cookie: {
-				httpOnly: true,
-				sameSite: "none",
-				secure: true,
-				domain: config.SESSION_COOKIE_DOMAIN,
-			},
 		}),
 	);
 	app.use(passport.initialize());
@@ -123,7 +116,13 @@ const startServer = async () => {
 		cors<cors.CorsRequest>(corsOptions),
 		passport.authenticate("google", { failureRedirect: config.APP_URL }),
 		(req, res) => {
-			console.log("Cookie onnistui", req, res)
+			console.log("Cookie onnistui", req, res);
+			res.cookie(config.SESSION_COOKIE_NAME, req.sessionID, {
+				httpOnly: true,
+				sameSite: "none",
+				secure: true,
+				domain: config.SESSION_COOKIE_DOMAIN,
+			});
 			res.redirect(config.APP_URL);
 		},
 	);
