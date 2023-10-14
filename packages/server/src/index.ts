@@ -123,6 +123,7 @@ const startServer = async () => {
 		cors<cors.CorsRequest>(corsOptions),
 		passport.authenticate("google", { failureRedirect: config.APP_URL }),
 		(req, res) => {
+			console.log("Cookie onnistui", req, res)
 			res.redirect(config.APP_URL);
 		},
 	);
