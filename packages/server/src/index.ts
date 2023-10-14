@@ -122,6 +122,7 @@ const startServer = async () => {
 				httpOnly: true,
 				sameSite: "none",
 				secure: true,
+				domain: config.SESSION_COOKIE_DOMAIN
 			});
 			res.redirect(config.APP_URL);
 		},
