@@ -6,7 +6,7 @@ With this information, the app can provide real-time lure color recommendations 
 
 https://catchmaster.vercel.app/
 
-## Table of Contents
+## Table of Contents 
 
 -   [Features](#features)
 -   [Technologies](#technologies)
