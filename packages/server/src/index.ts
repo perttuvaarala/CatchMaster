@@ -95,6 +95,17 @@ const startServer = async () => {
 	app.use(passport.initialize());
 	app.use(passport.session());
 
+	app.use(
+		"/graphql",
+		cors<cors.CorsRequest>(corsOptions),
+		json(),
+		expressMiddleware(server, {
+			context: async ({ req }): Promise<TContext> => {
+				return { user: req.user as User | undefined };
+			},
+		}),
+	);
+
 	app.get(
 		"/auth/google",
 		cors<cors.CorsRequest>(corsOptions),
@@ -113,17 +124,6 @@ const startServer = async () => {
 			});
 			res.redirect(config.APP_URL);
 		},
-	);
-
-	app.use(
-		"/",
-		cors<cors.CorsRequest>(corsOptions),
-		json(),
-		expressMiddleware(server, {
-			context: async ({ req }): Promise<TContext> => {
-				return { user: req.user as User | undefined };
-			},
-		}),
 	);
 
 	httpServer.listen({ port: config.PORT }, () =>
