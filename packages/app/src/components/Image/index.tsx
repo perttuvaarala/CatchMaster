@@ -16,12 +16,17 @@ const StyledImageContainer = styled.div`
 
 interface ImageProps {
 	src: string;
+	alt: string;
+	fallback?: string;
 }
 
-const Image: FC<ImageProps> = ({ src }) => {
+const Image: FC<ImageProps> = ({ src, alt, fallback }) => {
+	const handleError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+		e.currentTarget.src = fallback;
+	};
 	return (
 		<StyledImageContainer>
-			<StyledImage src={src} />
+			<StyledImage src={src} alt={alt} onError={handleError} />
 		</StyledImageContainer>
 	);
 };
