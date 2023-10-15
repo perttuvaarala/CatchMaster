@@ -37,20 +37,14 @@ const ImagePopupContent = styled.div`
 interface ImageProps {
 	src: string;
 	alt: string;
-	fallback?: string;
+	fallback: string;
 }
 
-<<<<<<< HEAD
 const Image: FC<ImageProps> = ({ src, alt, fallback }) => {
 	const handleError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
 		e.currentTarget.src = fallback;
 	};
-	return (
-		<StyledImageContainer>
-			<StyledImage src={src} alt={alt} onError={handleError} />
-		</StyledImageContainer>
-=======
-const Image: FC<ImageProps> = ({ src }) => {
+
 	const [isImagePopupOpen, setImagePopupOpen] = useState(false);
 
 	const openImagePopup = () => {
@@ -64,7 +58,7 @@ const Image: FC<ImageProps> = ({ src }) => {
 	return (
 		<>
 			<StyledImageContainer onClick={openImagePopup}>
-				<StyledImage src={src} />
+				<StyledImage src={src} alt={alt} onError={handleError} />
 			</StyledImageContainer>
 
 			{isImagePopupOpen && (
@@ -75,7 +69,6 @@ const Image: FC<ImageProps> = ({ src }) => {
 				</ImagePopup>
 			)}
 		</>
->>>>>>> edffb1b05494f42ce5285455d077f4c2a527956f
 	);
 };
 
