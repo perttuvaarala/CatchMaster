@@ -35,6 +35,7 @@ const StyledEditProfile = styled.div``;
 export const StyledInputButton = styled.input`
 	background-color: transparent;
 	padding: 0.75rem 0.25rem;
+	margin: 0.75rem 0;
 	border: 1px solid hsl(92 73% 60% / 1);
 	color: hsl(92 73% 60% / 1);
 	border-radius: 0.5rem;
@@ -64,6 +65,7 @@ export const StyledSelect = styled.select`
 	color: rgb(214, 232, 211);
 	padding: 0px 1rem;
 	font-size: 1rem;
+	cursor: pointer;
 `;
 
 export const StyledForm = styled.form`

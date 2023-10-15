@@ -7,7 +7,10 @@ import {
 } from "../components/LureBox/graphql/LureBox.generated";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 import { useState } from "react";
-import { StyledInputButton } from "../components/EditProfile/index";
+import {
+	StyledInput,
+	StyledInputButton,
+} from "../components/EditProfile/index";
 import {
 	CurrentUserDocument,
 	useModifyCurrentUserMutation,
@@ -37,11 +40,13 @@ const StyledSelect = styled.select`
 	color: rgb(214, 232, 211);
 	padding: 0px 1rem;
 	font-size: 1rem;
+	cursor: pointer;
 `;
 
 export const StyledButton = styled.button`
 	background-color: transparent;
 	padding: 0.75rem 0.25rem;
+	margin: 0.75rem 0;
 	border: 1px solid hsl(92 73% 60% / 1);
 	color: hsl(92 73% 60% / 1);
 	border-radius: 0.5rem;
@@ -163,31 +168,31 @@ const NewBaitForm = () => {
 				<StyledNewBaitForm onSubmit={handleNewBait}>
 					<h2>Make a new bait:</h2>
 					<label>Name</label>
-					<input
+					<StyledInput
 						type="string"
 						value={newBaitName}
 						onChange={(e) => setNewBaitName(e.target.value)}
-					></input>
+					></StyledInput>
 					<label>Brand</label>
-					<input
+					<StyledInput
 						type="string"
 						value={newBaitBrand}
 						onChange={(e) => setNewBaitBrand(e.target.value)}
-					></input>
+					></StyledInput>
 					<label>Color</label>
-					<input
+					<StyledInput
 						type="string"
 						value={newBaitColor}
 						onChange={(e) => setNewBaitColor(e.target.value)}
-					></input>
+					></StyledInput>
 					<label>Weight</label>
-					<input
+					<StyledInput
 						type="number"
 						value={newBaitWeight}
 						onChange={(e) =>
 							setNewBaitWeight(parseInt(e.target.value))
 						}
-					></input>
+					></StyledInput>
 					<StyledInputButton
 						value={"Add new lure to global catalogue"}
 						type="submit"

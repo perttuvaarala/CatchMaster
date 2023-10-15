@@ -67,10 +67,10 @@ function Weather() {
 				<StyledWeather>
 					{weatherData ? (
 						<>
-							<h1>
+							<h1 style={{ margin: "0.5rem" }}>
 								{weatherData.current_weather.temperature} °C
 							</h1>
-							<h2>
+							<h2 style={{ margin: "0.5rem" }}>
 								{
 									weatherCodes[
 										("" +
@@ -96,6 +96,9 @@ function Weather() {
 									]
 								}{" "}
 								%
+							</span>
+							<span>
+								UV index: {weatherData.hourly.uv_index[hourNow]}
 							</span>
 							<span>
 								Visibility:{" "}
