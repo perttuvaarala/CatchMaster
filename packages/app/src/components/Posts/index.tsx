@@ -7,6 +7,7 @@ import { useCurrentUser } from "../../hooks/useCurrentUser";
 import "../../Link.css";
 import { StyledButton } from "../../views/newBait";
 import { router } from "../../router";
+import logo from "../../assets/image-not-found.png";
 
 const StyledPost = styled.div`
 	display: flex;
@@ -113,7 +114,11 @@ const Post: FC<PostProps> = ({ post }) => {
 						<span>{post.lenght}cm</span>
 					</StyledPostPart>
 				</StyledPostPart>
-				<Image src={post.imagelink as string} />
+				<Image
+					src={post.imagelink as string}
+					alt={post.fish.id as string}
+					fallback={logo}
+				/>
 				<StyledPostPart>
 					<h4>
 						<u>Bait</u>
