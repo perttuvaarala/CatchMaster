@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import {
 	AllPostsDocument,
@@ -20,7 +20,8 @@ const NewPost: React.FC = () => {
 	const [weight, setWeight] = useState(0);
 	const [content, setContent] = useState("");
 	const [image, setImage] = useState("");
-
+	const [baitID, setBaitID] = useState("");
+	const [fishID, setFishID] = useState("");
 	let weather: string = "";
 
 	const currentUser = useCurrentUser();
@@ -42,16 +43,20 @@ const NewPost: React.FC = () => {
 		loading: fishLoading,
 		error: fishError,
 	} = useGetAllFishQuery();
-
+    useEffect(() => {
+        if (baitData && fishData) {
+            const defbait = baitData.getAllBaits[0].id;
+            const deffish = fishData.getAllFish[0].id;
+            setBaitID(defbait);
+            setFishID(deffish);
+        }
+    }, [baitData, fishData]);
 	if (loading || baitLoading || fishLoading) return <p>Loading...</p>;
 	if (error) return `Error! ${error.message}`;
 	if (baitError) return `Error! ${baitError.message}`;
 	if (fishError) return `Error! ${fishError.message}`;
 	if (!data || !baitData || !fishData) return <p>Not found</p>;
-	const defbait = baitData.getAllBaits[0].id;
-	const deffish = fishData.getAllFish[0].id;
-	const [baitID, setBaitID] = useState(defbait);
-	const [fishID, setFishID] = useState(deffish);
+
 	const handleLengthChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const value = parseFloat(e.target.value);
 		setLength(value);

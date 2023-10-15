@@ -6,7 +6,7 @@ import {
 	GetAllBaitsDocument,
 } from "../components/LureBox/graphql/LureBox.generated";
 import { useCurrentUser } from "../hooks/useCurrentUser";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
 	StyledInput,
 	StyledInputButton,
@@ -67,7 +67,7 @@ const NewBaitForm = () => {
 	const [newBaitBrand, setNewBaitBrand] = useState("");
 	const [newBaitColor, setNewBaitColor] = useState("");
 	const [newBaitWeight, setNewBaitWeight] = useState(0);
-
+	const [baitID, setBaitID] = useState("");
 	const [createNewBait] = useCreateNewBaitMutation();
 	const [addToBox] = useModifyCurrentUserMutation();
 
@@ -83,13 +83,17 @@ const NewBaitForm = () => {
 		loading: baitLoading,
 		error: baitError,
 	} = useGetAllBaitsQuery();
-
+	useEffect(() => {
+        if (baitData) {
+            const defbait = baitData.getAllBaits[0].id;
+            setBaitID(defbait);
+        }
+    }, [baitData]);
 	if (loading || baitLoading) return <p>Loading...</p>;
 	if (error) return `Error! ${error.message}`;
 	if (baitError) return `Error! ${baitError.message}`;
 	if (!data || !baitData) return <p>Not found</p>;
-	const defbait = baitData.getAllBaits[0].id;
-	const [baitID, setBaitID] = useState(defbait);
+	
 	
 	const handleNewBait = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
