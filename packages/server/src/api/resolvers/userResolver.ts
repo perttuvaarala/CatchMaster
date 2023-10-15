@@ -2,7 +2,7 @@ import { TContext } from "./../../index";
 import BaitModel from "../models/baitModel";
 import UserModel, { User } from "../models/userModel";
 
-const userReslover = {
+const userResolver = {
 	User: {
 		baits: async (
 			parent: User,
@@ -72,4 +72,4 @@ const userReslover = {
 	},
 };
 
-export default userReslover;
+export default userResolver;
