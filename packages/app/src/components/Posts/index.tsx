@@ -82,7 +82,9 @@ const Post: FC<PostProps> = ({ post }) => {
 		<StyledPost>
 			<StyledDiv>
 				<h3>{post.user.username}</h3>
-				<p>Favourite: {post.user.favouriteFishingStyle}</p>
+				{post.user.favouriteFishingStyle && (
+					<p>Favourite: {post.user.favouriteFishingStyle}</p>
+				)}
 			</StyledDiv>
 			<StyledDiv>
 				<div>

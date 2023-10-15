@@ -149,6 +149,7 @@ function EditProfile() {
 					type="date"
 					value={birthdate}
 					onChange={(e) => setBirthdate(e.target.value)}
+					max={new Date().toISOString().split("T")[0]}
 				></StyledInput>
 				<label>Favourite fishing style</label>
 				<StyledSelect
