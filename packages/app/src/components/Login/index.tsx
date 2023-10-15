@@ -1,7 +1,6 @@
 import { FC } from "react";
 import styled from "styled-components";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
-import { router } from "../../router";
 
 const StyledLoginContainer = styled.div``;
 
