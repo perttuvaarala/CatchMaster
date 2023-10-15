@@ -4,6 +4,7 @@ import L, { LatLngExpression } from "leaflet";
 import { useEffect, useState } from "react";
 import { useAllPostsQuery } from "../Posts/grapqhl/AllPosts.generated";
 import logo from "../../assets/marker-icon-2x-red.png";
+import blue from "../../assets/marker-icon-2x-blue.png";
 import styled from "styled-components";
 import "./index.css";
 
@@ -21,6 +22,12 @@ function Map() {
 
 	const redMarker = L.icon({
 		iconUrl: logo,
+		iconSize: [25, 41],
+		iconAnchor: [12, 41],
+		popupAnchor: [1, -34],
+	});
+	const blueMarker = L.icon({
+		iconUrl: blue,
 		iconSize: [25, 41],
 		iconAnchor: [12, 41],
 		popupAnchor: [1, -34],
@@ -78,7 +85,7 @@ function Map() {
 						</Popup>
 					</Marker>
 					{data.getAllPosts.map((post) => (
-						<Marker key={post.id} position={[post.lat, post.lon]}>
+						<Marker icon={blueMarker} key={post.id} position={[post.lat, post.lon]}>
 							<Popup className=".leaflet-popup-content-wrapper">
 								<StyledMarkerPopup>
 									<span>
