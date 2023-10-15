@@ -43,7 +43,7 @@ const postSchema = new mongoose.Schema<Post>({
   },
   imagelink: {
     type: String,
-    required: true,
+    required: false,
   },
   baitID: {
     type: String,
