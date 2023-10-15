@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import "../../Link.css";
 import { StyledButton } from "../../views/newBait";
+import { router } from "../../router";
 
 const StyledPost = styled.div`
 	display: flex;
@@ -160,7 +161,10 @@ const Posts: FC = () => {
 				</StyledButton>
 			)}
 			{user && (
-				<button className="plusbutton">
+				<button
+					className="plusbutton"
+					onClick={() => router.navigate("/NewPost")}
+				>
 					<NavLink className="plusLink" to={"/NewPost"}>
 						<u className="plusLink">+</u>
 					</NavLink>
