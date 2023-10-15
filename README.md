@@ -32,7 +32,8 @@ https://catchmaster.vercel.app/
 -   MongoDB Atlas
 -   NodeJS
 -   Express.js
--  Vite with React
+-   Vite with React
+-   Jest
 
 ## Dependencies
 
@@ -83,7 +84,7 @@ then run:
 
 -   Using these commands launches the development server to the ports configurated in the .env file
 
-## Adding new dependencies 
+## Adding new dependencies
 
 -   To add new dependencies to the frontend, run the following command:
 
@@ -99,8 +100,10 @@ then run:
 
 ## Tests
 
+Navigate to the project directory
+
 -   Run tests using the following command:
 
 ```bash
-   npm run test
+   npm test
 ```

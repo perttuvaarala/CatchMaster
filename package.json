@@ -4,7 +4,7 @@
   "description": "Projektin idea on luoda kalastus sovellus jossa käyttäjä näkee suosituksia mahdollisille uistimille riippuen sääolosuhteista. Käytännössä sovellus toimisi niin, että käyttäjä lisää saamansa kalan pituuden, painon ja uistimen jolla kala on saatu, sovellus sitten tallentaa automaattisesti sää olosuhteet. Tämän tiedon perusteella sovellus osaa alkaa suositteleman sopivaa uistimen väristystä realiaikaiseen säähän nähden. Käyttäjäryhmä olisi kalastusharrastajat.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,11 @@
   "homepage": "https://github.com/perttuvaarala/CatchMaster#readme",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "@types/jest": "^29.5.5",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.2.2"
+  }
 }
