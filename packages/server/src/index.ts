@@ -127,6 +127,29 @@ const startServer = async () => {
 		},
 	);
 
+ app.get("/auth/logout", async (req, res, next) => {
+            try {
+                await new Promise((resolve, reject) => {
+                    req.logOut((e) => {
+                        if (e) return reject(e);
+                        resolve(true);
+                    });
+                });
+                await new Promise((resolve, reject) => {
+                    req.session.destroy((error) => {
+                        if (error) reject(error);
+                        res.clearCookie(config.SESSION_COOKIE_NAME);
+                        req.session = null as any;
+                        resolve(true);
+                    });
+                });
+
+                res.redirect(config.APP_URL);
+            } catch (e) {
+                next(e);
+            }
+        })
+
 	httpServer.listen({ port: config.PORT }, () =>
 		console.log(`🚀 Server ready at port ${config.PORT}`),
 	);
