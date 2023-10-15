@@ -20,8 +20,7 @@ const NewPost: React.FC = () => {
 	const [weight, setWeight] = useState(0);
 	const [content, setContent] = useState("");
 	const [image, setImage] = useState("");
-	const [baitID, setBaitID] = useState("651c1094231992254e2d4c3e");
-	const [fishID, setFishID] = useState("6526680a31a5f08221d5c342");
+
 	let weather: string = "";
 
 	const currentUser = useCurrentUser();
@@ -49,7 +48,10 @@ const NewPost: React.FC = () => {
 	if (baitError) return `Error! ${baitError.message}`;
 	if (fishError) return `Error! ${fishError.message}`;
 	if (!data || !baitData || !fishData) return <p>Not found</p>;
-
+	const defbait = baitData.getAllBaits[0].id;
+	const deffish = fishData.getAllFish[0].id;
+	const [baitID, setBaitID] = useState(defbait);
+	const [fishID, setFishID] = useState(deffish);
 	const handleLengthChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const value = parseFloat(e.target.value);
 		setLength(value);
@@ -88,6 +90,8 @@ const NewPost: React.FC = () => {
 					"Error fetching weather data: " + error?.message,
 				);
 			});
+			
+			
 
 		try {
 			CreatePost({
@@ -163,7 +167,7 @@ const NewPost: React.FC = () => {
 				onChange={handleImageChange}
 			/>
 			<label htmlFor="bait">Bait*</label>
-			<StyledSelect
+			<StyledSelect 
 				onChange={(e) =>
 					setBaitID(baitData.getAllBaits[e.target.selectedIndex].id)
 				}
@@ -175,7 +179,7 @@ const NewPost: React.FC = () => {
 				))}
 			</StyledSelect>
 			<label htmlFor="fish">Fish:*</label>
-			<StyledSelect
+			<StyledSelect 
 				onChange={(e) =>
 					setFishID(fishData.getAllFish[e.target.selectedIndex].id)
 				}

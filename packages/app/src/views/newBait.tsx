@@ -61,7 +61,7 @@ export const StyledButton = styled.button`
 const NewBaitForm = () => {
 	const currentUser = useCurrentUser();
 	const userID = currentUser?.id;
-	const [baitID, setBaitID] = useState("651c1094231992254e2d4c3e");
+	
 
 	const [newBaitName, setNewBaitName] = useState("");
 	const [newBaitBrand, setNewBaitBrand] = useState("");
@@ -88,7 +88,9 @@ const NewBaitForm = () => {
 	if (error) return `Error! ${error.message}`;
 	if (baitError) return `Error! ${baitError.message}`;
 	if (!data || !baitData) return <p>Not found</p>;
-
+	const defbait = baitData.getAllBaits[0].id;
+	const [baitID, setBaitID] = useState(defbait);
+	
 	const handleNewBait = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		createNewBait({
