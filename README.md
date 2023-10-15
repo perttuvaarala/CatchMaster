@@ -4,7 +4,7 @@ Catchmaster a fishing app where users can share experiences from their fishing t
 In practice, the app works by allowing users to input the length, weight, and the lure used to catch a fish, and it records the user's weather conditions.
 With this information, the app can provide real-time lure color recommendations tailored to the current weather. The target audience for this app is fishing enthusiasts.
 
-https://catchmaster.vercel.app/
+[https://catchmaster.vercel.app/](https://catchmaster.adnanavni.dev/)
 
 ## Table of Contents 
 
