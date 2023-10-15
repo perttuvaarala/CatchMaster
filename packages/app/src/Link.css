@@ -83,7 +83,8 @@ a.nav-link {
 	background-color: #d8fbb8;
 	width: 50%;
 	text-align: center;
-	position:absolute
+	position:absolute;
+	z-index: 999;
 
   }
   

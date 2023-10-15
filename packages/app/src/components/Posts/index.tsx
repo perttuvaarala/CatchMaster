@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { AllPostsQuery, useAllPostsQuery } from "./grapqhl/AllPosts.generated";
-import { FC } from "react";
+import { FC, useState } from "react";
 import Image from "../Image";
 import { NavLink } from "react-router-dom";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import "../../Link.css";
+import { StyledButton } from "../../views/newBait";
 
 const StyledPost = styled.div`
 	display: flex;
@@ -18,7 +19,7 @@ const StyledPost = styled.div`
 
 const StyledBackground = styled.div`
 	display: flex;
-	flex-direction: column-reverse;
+	flex-direction: column;
 	gap: 1.5rem;
 `;
 
@@ -74,7 +75,6 @@ const Post: FC<PostProps> = ({ post }) => {
 	const formattedDate = `${timestamp.getDate()}.${
 		timestamp.getMonth() + 1
 	}.${timestamp.getFullYear()}`;
-
 	const coords = formatCoordinates(post.lat, post.lon, 1);
 
 	return (
@@ -127,19 +127,38 @@ const Post: FC<PostProps> = ({ post }) => {
 	);
 };
 
-export default function Posts() {
+const Posts: FC = () => {
 	const user = useCurrentUser();
 	const { loading, error, data } = useAllPostsQuery();
+	const [postsToShow, setPostsToShow] = useState(5);
 
 	if (loading) return <p>Loading...</p>;
 	if (error) return `Error! ${error.message}`;
 	if (!data) return <p>Not found</p>;
 
+	const reversedPosts = data.getAllPosts.slice().reverse();
+
+	const visiblePosts = reversedPosts.slice(0, postsToShow);
+
+	const loadMorePosts = () => {
+		setPostsToShow(postsToShow + 5);
+	};
+
+	const allPostsVisible = postsToShow >= reversedPosts.length;
+
 	return (
 		<StyledBackground>
-			{data.getAllPosts.map((post) => (
+			{visiblePosts.map((post) => (
 				<Post key={post.id} post={post} />
 			))}
+			{!allPostsVisible && (
+				<StyledButton
+					className="loadMoreButton"
+					onClick={loadMorePosts}
+				>
+					Load more
+				</StyledButton>
+			)}
 			{user && (
 				<button className="plusbutton">
 					<NavLink className="plusLink" to={"/NewPost"}>
@@ -149,4 +168,6 @@ export default function Posts() {
 			)}
 		</StyledBackground>
 	);
-}
+};
+
+export default Posts;

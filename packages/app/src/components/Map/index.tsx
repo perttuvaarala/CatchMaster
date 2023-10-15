@@ -81,17 +81,26 @@ function Map() {
 						<Marker key={post.id} position={[post.lat, post.lon]}>
 							<Popup className=".leaflet-popup-content-wrapper">
 								<StyledMarkerPopup>
-									<p>
-										<b>
-											{post.fish.name} {post.weight}kg{" "}
-											{post.lenght}cm
-										</b>
-									</p>
-									<p>
-										{post.bait.name}{" "}
-										{post.bait.weight.toFixed(1)}cm
-									</p>
-									<p>Color: {post.bait.color}</p>
+									<span>
+										<b>Fish:</b>
+									</span>
+									<br />
+									<span>{post.fish.name}</span>
+									<br />
+									<span>{post.weight}kg</span>
+									<br />
+									<span>{post.lenght}cm</span>
+									<br />
+									<br />
+									<span>
+										<b>Bait:</b>{" "}
+									</span>
+									<br />
+									<span>{post.bait.name}</span>
+									<br />
+									<span>{post.bait.weight.toFixed(1)}g</span>
+									<br />
+									<span>Color: {post.bait.color}</span>
 								</StyledMarkerPopup>
 							</Popup>
 						</Marker>
